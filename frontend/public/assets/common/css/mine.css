@@ -1,0 +1,448 @@
+/*  Test CSS    */
+/* .userForm{
+    margin-top: -5%;
+} */
+
+/******** Search **********/
+.input-group input{
+    width: 90%;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    float: left;
+}
+.input-group input:focus{
+    border: 3px solid #FF00E2 !important;
+}
+.input-group button{
+    height: 34px;
+}
+.borderLB{
+    border-left: 3px solid #FF00E2 ;
+    border-bottom: 3px solid #FF00E2;
+    width: 250px;
+}
+.backtoHome{
+    text-decoration: none;
+    font-size: 24px;
+}
+.userForm input {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.userForm input:focus {
+    border: 3px solid rgb(240, 90, 220) !important;
+}
+.userForm textarea:focus{
+    border: 1px solid #FF00E2;
+}
+.registerbtn {
+    width: 880px;
+    height: 38.4px;
+    margin-top: 3%;
+    font-size: 19px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    -webkit-transition: all 0.5s ease;
+    transition: 0.5s;
+}
+
+.registerbtn:hover {
+    background-color: #FF00E2 !important;
+}
+.inputbtn {
+    width: 880px;
+    height: 38.4px;
+    margin-top: 3%;
+    font-size: 19px;
+    border: none;
+    background-color: #ffffff;
+    color: #fff;
+    -webkit-transition: all 0.5s ease;
+    transition: 0.5s;
+    border: 2px solid #000;
+}
+
+.inputbtn:focus {
+    border: 2px solid #FF00E2 !important;
+}
+.loginbtnFB {
+    width: 430px;
+    height: 45px;
+    margin-top: 3%;
+    font-size: 19px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    -webkit-transition: all 0.5s ease;
+    transition: 0.5s;
+    margin-right: 10px;
+}
+
+.loginbtnFB:hover {
+    background-color: #FF00E2 !important;
+}
+
+.loginbtnGG {
+    width: 430px;
+    height: 45px;
+    margin-top: 3%;
+    font-size: 19px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    -webkit-transition: all 0.5s ease;
+    transition: 0.5s;
+    margin-left: 10px;
+}
+
+.loginbtnGG:hover {
+    background-color: #FF00E2 !important;
+}
+
+.iconLogin {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.completeEdit {
+    border: 2px solid lightgreen;
+}
+
+.recancel {
+    border: 2px solid red;
+}
+
+.fixWidthCategory {
+    width: 260px;
+    height: 40px;
+    border-left: solid rgb(240, 90, 220);
+    border-bottom: 2px solid rgb(240, 90, 220);
+    margin: 5px 10px 5px 5px;
+}
+
+.bestPadding {
+    padding-left: 13%;
+    padding-right: 4%
+}
+
+@media screen and (max-width: 480px) {
+    .bestPadding {
+        padding-left: 10%;
+        padding-right: 10%
+    }
+}
+
+.text-center {
+    text-align: center;
+    font-weight: bold;
+}
+
+/*  Cart    */
+.bordered {
+    /* border: 1px solid #333; */
+    width: 100%;
+}
+.bordered th{
+    text-align: center;
+    border: 1px solid #333;
+}
+.bordered th:last-child{
+    border-right: 0px solid #333;
+}
+.bordered td{
+    text-align: center;
+    border-left: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 1%;
+}
+/* .bordered tr{
+    text-align: center;
+    border: 1px solid #333;
+} */
+.changeQuantity{
+    cursor: pointer;
+    font-size: 25px;
+}
+.changeQuantity:hover{
+    color: #FF00E2;
+}
+.imgcart {
+    width: 50%;
+    height: 30%;
+}
+.checkout{
+    font-size: 24px;
+}
+.checkout span:first-child{
+    color: #FF00E2;
+}
+
+/*******************************/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-content p {
+    padding-top: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.redline {
+    color: red;
+}
+
+/*  Login */
+.InoriLeft a {
+    text-decoration: 1px solid #FF00E2 underline;
+}
+
+.Inori {
+    float: right;
+    padding: 2px;
+}
+
+.Yuzuriha {
+    text-align: center;
+}
+
+.loginFB {
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+}
+
+.loginGG {
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+}
+
+#contact .submit button {
+    width: 100%;
+    font-family: "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "游ゴシック", YuGothic, sans-serif;
+    background-color: #000 !important;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: all .2s ease;
+    border: none;
+}
+
+#contact .submit button:hover {
+    background-color: #FF00E2 !important
+}
+
+/** Profile **/
+.commonPadding .smallWidth#formArea img#showimg {
+    width: 50% !important;
+    height: 50% !important;
+    float: left;
+    margin-left: -20%;
+}
+
+.tezt {
+    float: left;
+    width: 50%;
+    margin-left: 10%;
+}
+
+.profileText1 {
+    float: left;
+    padding-bottom: 5%;
+    width: 200px;
+    text-align: center;
+    text-decoration: 1px underline red;
+}
+
+.profileText2 {
+    float: left;
+}
+
+.profileText3 {
+    margin-left: 5%;
+}
+
+/** Category **/
+.sc-item {
+    width: 120px;
+    float: left;
+}
+
+.sc-item div:hover {
+    color: rgb(240, 90, 220)
+}
+
+.cs-item1 {
+    text-align: center;
+    width: 50px;
+    font-size: 15px;
+    border: 1px solid #333;
+    float: left;
+    color: #000;
+}
+
+.cs-item1:hover {
+    border: 1px solid #FF00E2;
+}
+
+.cateName {
+    color: #FF00E2;
+    width: 140px;
+}
+
+.name-color {
+    text-decoration: none !important;
+}
+
+/** ProductDetail **/
+.show-rating i {
+    font-size: 13px !important;
+}
+
+.star-pro i {
+    font-size: 18px !important;
+}
+
+.star-pro span {
+    font-size: 18px !important;
+}
+
+.page-details {
+    padding-top: 40px;
+    padding-bottom: 45px;
+}
+
+.pd-sold-pro {
+    position: absolute !important;
+    margin-left: 115px !important;
+}
+
+.pd-sold-pro span {
+    list-style: none;
+    font-size: 16px;
+    color: #636363;
+    line-height: 30px;
+}
+
+.checkColor {
+    float: left;
+    margin-right: 10px;
+}
+
+.checkSize {
+    float: left;
+    margin-right: -30px;
+}
+
+.sc-item1 {
+    width: 70px;
+    float: left;
+    text-align: center;
+    border: 1px solid #FF00E2;
+    margin-right: 10px;
+}
+
+.sc-item1:hover {
+    color: rgb(240, 90, 220);
+    background-color: #f5f5f5;
+    opacity: 0.9;
+}
+
+.inputQuantity {
+    width: 100px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.inputQuantity:focus {
+    border: 3px solid rgb(240, 90, 220) !important;
+}
+
+.soldOut {
+    overflow: hidden;
+    padding: 3px 25px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    background-color: red;
+    color: black;
+    font-family: "Barlow", "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "游ゴシック", YuGothic, sans-serif;
+    text-decoration: none;
+}
+.soldOut:hover{
+    color: black;
+}
+
+/* check out */
+.checkout50{
+    min-height: 1000px;
+    width: 94%;
+    margin: 3%;
+}
+.checkoutz{
+    width: 50%;
+    float: left;
+    min-height: 500px;
+    padding: 2%;
+}
+.priceCart{
+    width: 90%;
+}
+.priceCart li.totalPrice{
+    border-top: 3px solid #FF00E2;
+}
+.priceCart li{
+    width: 100%;
+    padding: 3%;
+    font-weight: bold;
+    border-bottom: 1px solid #636363;
+}
+.priceCart li:last-child{
+    border: none;
+}
+.priceCart span{
+    width: 40%;
+    float: right;
+    text-align: right;
+    border-left: 1px solid red;
+}
+.voucherbtn{
+    height: 38.4px;
+    margin-left: 1%;
+    border: 2px solid black !important;
+}
