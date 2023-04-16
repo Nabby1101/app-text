@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const api = Axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://nabby-app.onrender.com/',
     headers: {
         'Content-Type': 'application/json'
     }
