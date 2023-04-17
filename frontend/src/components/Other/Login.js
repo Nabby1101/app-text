@@ -16,8 +16,8 @@ const Login = () => {
     JSON.parse(localStorage.getItem('userInfo')) !== null ? true : false;
 
   const initialValues = {
-    email: 'sogeking2k2@gmail.com',
-    password: '111111Aa@',
+    email: '',
+    password: '',
   };
 
   const notify = () =>

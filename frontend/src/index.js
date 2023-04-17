@@ -14,5 +14,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-// pass_test: 111111Aa@
+
 reportWebVitals();
