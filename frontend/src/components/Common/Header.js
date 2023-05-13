@@ -29,47 +29,6 @@ const Header = (props) => {
   //   console.log('header', props.user)
   // }, [props.user])
 
-  const onChangeHandler = (text) => {
-    let matches = [];
-    if (text.charCodeAt(0) === 43) {
-      toast.warning(
-        'Ký tự bạn nhập không phù hợp. Vui lòng nhập ký tự khác.'
-      );
-      return;
-    }
-    if (lstPro && lstPro.Products) {
-      matches = lstPro.Products.filter((item) => {
-        return item.name.toLowerCase().match(text.toLowerCase());
-      });
-      setSuggestions(matches);
-      setSearch(text);
-    }
-  };
-
-  const onSuggestHandler = (text) => {
-    setSearch('');
-    setSuggestions([]);
-    if (text.length !== 0) {
-      dispatch(getSearch(text.toLowerCase()));
-      history.push(`/tim-kiem?key=${text.toLowerCase()}`);
-      setSuggestions([]);
-    }
-  };
-
-  const handleFind = () => {
-    if (search.length !== 0) {
-      dispatch(getSearch(search.toLowerCase()));
-      history.push(`/tim-kiem?key=${search.toLowerCase()}`);
-      setSuggestions([]);
-    }
-  };
-
-  const handleKeypress = (e) => {
-    if (e.charCode === 13) {
-      handleFind();
-    }
-  };
-
   var total = 0;
 
   const ToTalPro = (price, quantity) => {
@@ -134,7 +93,7 @@ const Header = (props) => {
                 className=''
                 target
               >
-                Thông Tin Cá Nhân
+                Trang Cá Nhân
               </Link>
             ) : (
               <Link to="/login" className='' target>Đăng Nhập</Link>
@@ -158,7 +117,7 @@ const Header = (props) => {
             <a href="#" target><img src="./assets/common/imgs/top_tw.png" alt="Twitter" /></a>
             <a href="#" target><img src="./assets/common/imgs/top_fb.png" alt="facebook" /></a>
             <a href="#" target><img src="./assets/common/imgs/top_inst.png" alt="instagram" /></a>
-            <a href="#" target><img src="./assets/common/imgs/top_sp.png" alt="Spotify" /></a>
+            <a href="/danh-muc-ua-thich" target><i  className='icon_heart_alt' alt="Favorites" /></a>
             {/* <a href="#" target><img src="./assets/common/imgs/top_cart.png" alt="HistoryOrder" /></a> */}
           </div>
           {/* コンタクト */}
@@ -180,49 +139,6 @@ const Header = (props) => {
               <li data-val="ja|zh-TW">Chinese (Traditional)</li>
               <li data-val="ja|ja">Japanese</li>
             </ul>
-          </div>
-        </div>
-        <div className="col-lg-7 col-md-7">
-          <div className="advanced-search">
-            <div className="input-group">
-              <input
-                value={search}
-                type="text"
-                onChange={(e) =>
-                  onChangeHandler(e.target.value)
-                }
-                onBlur={() => {
-                  setTimeout(() => {
-                    setSuggestions([]);
-                  }, 1000);
-                }}
-                onKeyPress={(e) => handleKeypress(e)}
-                placeholder="Nhập từ khóa tìm kiếm"
-              />
-              <div className="col-md-11 justify-content-md-center show-suggestions">
-                {suggestions &&
-                  suggestions.map((value, i) => (
-                    <div
-                      key={i}
-                      className="col-md-12 suggest"
-                      onClick={() =>
-                        onSuggestHandler(
-                          value.name
-                        )
-                      }
-                    >
-                      {value.name}
-                    </div>
-                  ))}
-              </div>
-              <button
-                style={{ background: 'black', border: 'none' }}
-                type="submit" onClick={handleFind}
-                className='btmHover enFont'
-              >
-                <span>Tìm kiếm</span>
-              </button>
-            </div>
           </div>
         </div>
         {/*gnav-wrap*/}

@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getProducts } from '../../redux/actions/productActions';
 
 const RelatedProducts = (props) => {
+    const user = useSelector((state) => state.user.user);
     const cate = props.cate;
     const slug = props.slug;
     const listCate = props.listCate;
@@ -64,89 +65,128 @@ const RelatedProducts = (props) => {
         return Arr[key];
     };
 
+    const handleCheckFavorite = (id) => {
+        var check = false;
+        if (user && user.favorites) {
+            user.favorites.forEach((values) => {
+                if (values._id === id) {
+                    return (check = true);
+                }
+            });
+        }
+        if (check === false) {
+            return (
+                <a></a>
+            );
+        } else {
+            return (
+                <a>Đã Yêu Thích Sản Phẩm</a>
+            );
+        }
+    };
+
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
 
     return (
-        <div className="related-products spad">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="section-title">
-                            <h2>Sản Phẩm Liên Quan</h2>
+        <div id='news' className="second" style={{float: 'left'}}>
+            <div className="commonWidth commonPadding">
+                <div className="enFont">
+                    <h2 style={{ textAlign: 'center' }}>Sản Phẩm Liên Quan</h2>
+                </div>
+                <div className="ichiran flex">
+                    <div className='main flex'>
+                        <div className='list container' style={{width: '100%', borderLeft: 'none'}}>
+                            <ul className='thumbList flex post imgHover'>
+                                {relatedPro.length !== 0 ? (
+                                    relatedPro.map((value, key) => {
+                                        return (
+                                            <li className='thumb border' style={{ marginLeft: '-1%', marginBottom: '3%', height:'333px', background: 'none'}}>
+                                                <div
+                                                    key={key}
+                                                    className=''
+                                                >
+                                                    <Link
+                                                        to={`/product/${value.slug}`}
+                                                        // target
+                                                        onClick={() =>
+                                                            localStorage.setItem(
+                                                                'proCate',
+                                                                value.categoryId
+                                                            )
+                                                        }
+                                                    >
+                                                        <img
+                                                            src={`http://localhost:8080/uploads/products/${checkImage(key)}`}
+                                                            alt="アクリルスタンド"
+                                                            style={{ zIndex: '-1', width: '100%', height: '' }}
+                                                        />
+                                                        <div className='mask'>
+                                                            <div className='caption' style={{ width: '', height: '' }}>
+                                                                {value.priceDiscount !==
+                                                                    0 ? (
+                                                                    <div className="ariaSale">
+                                                                        <a className target>
+                                                                            <img src="./assets/common/imgs/Sale_aria.png" alt="セール" />
+                                                                            <img src="./assets/common/imgs/Sale_aria.png" alt="セール" className="blur" />
+                                                                        </a>
+                                                                    </div>
+                                                                ) : (
+                                                                    <></>
+                                                                )}
+
+                                                                {/* <div>
+                                                  {checkCate(value.categoryId)}
+                                                </div> */}
+                                                                <p style={{ fontSize: '20px' }}>
+                                                                    {value.name}
+                                                                </p>
+                                                                <Link to={`/product/${value.slug}`} onClick={() =>
+                                                                    localStorage.setItem(
+                                                                        'proCate',
+                                                                        value.categoryId
+                                                                    )}>Chi Tiết</Link>
+                                                                <br />
+                                                                {handleCheckFavorite(
+                                                                    value._id
+                                                                )}
+                                                                {/* {value.priceDiscount !==
+                                                  0 ? (
+                                                  <div className="">
+                                                    {formatVND(
+                                                      value.priceDiscount
+                                                    )}
+                                                    <span>
+                                                      {' '}
+                                                      {formatVND(
+                                                        value.price
+                                                      )}
+                                                    </span>
+                                                  </div>
+                                                ) : (
+                                                  <div className="">
+                                                    {formatVND(
+                                                      value.price
+                                                    )}
+                                                  </div>
+                                                )} */}
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </li>
+                                            // </ul>
+                                        );
+                                    })
+                                ) : (
+                                    <div>
+                                        <h2>Không Có Sản Phẩm Nào Cả</h2>
+                                    </div>
+                                )}
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    {relatedPro.length !== 0 ? (
-                        relatedPro.map((value, key) => {
-                            return (
-                                <div key={key} className="col-lg-3 col-sm-6">
-                                    <Link
-                                        to={`/product/${value.slug}`}
-                                        onClick={() =>
-                                            localStorage.setItem(
-                                                'proCate',
-                                                value.categoryId
-                                            )
-                                        }
-                                    >
-                                        <div className="product-item">
-                                            <div className="pi-pic">
-                                                <img
-                                                    src={`http://localhost:5000/products/${checkImage(
-                                                        key
-                                                    )}`}
-                                                    alt=""
-                                                />
-                                                {value.priceDiscount !== 0 ? (
-                                                    <div className="sale">
-                                                        Sale
-                                                    </div>
-                                                ) : (
-                                                    <div></div>
-                                                )}
-
-                                                <div className="icon">
-                                                    <i className="icon_heart_alt"></i>
-                                                </div>
-                                            </div>
-                                            <div className="pi-text">
-                                                <div className="catagory-name">
-                                                    {checkCate(
-                                                        value.categoryId
-                                                    )}
-                                                </div>
-                                                <h5>{value.name}</h5>
-                                                {value.priceDiscount !== 0 ? (
-                                                    <div className="product-price">
-                                                        {formatVND(
-                                                            value.priceDiscount
-                                                        )}
-                                                        <span>
-                                                            {' '}
-                                                            {formatVND(
-                                                                value.price
-                                                            )}
-                                                        </span>
-                                                    </div>
-                                                ) : (
-                                                    <div className="product-price">
-                                                        {formatVND(value.price)}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            );
-                        })
-                    ) : (
-                        <h3 style={{ textAlign: 'center' }}>
-                            Không có sản phẩm liên quan{' '}
-                        </h3>
-                    )}
                 </div>
             </div>
         </div>

@@ -150,12 +150,13 @@ export const getTrashSizes = () => async (dispatch) => {
 
 //POST ACTIONS BEGIN
 export const storeProduct = (data) => async (dispatch) => {
+
+    console.log("data product ben actions", data);
     try {
-        console.log(data)
         const isSucc = await api.post('api/product/store', data);
         if (isSucc) {
-            //document.location.href = '/admin/products';
             toast.success('Thêm sản phẩm thành công !');
+            //document.location.href = '/admin/products';
         }
     } catch (e) {
         console.log(e);
@@ -168,7 +169,7 @@ export const storeProductAndContinue = (data) => async (dispatch) => {
         if (isSucc) {
             toast.success('Thêm sản phẩm thành công !');
         }
-    } catch (e) {
+    } catch (e) {   
         console.log(e);
     }
 };
@@ -177,8 +178,8 @@ export const storeColor = (data) => async (dispatch) => {
     try {
         const isSucc = await api.post('api/color/store', data);
         if (isSucc) {
-            document.location.href = '/admin/colors';
             toast.success('Thêm màu thành công !');
+            document.location.href = '/admin/colors';
         }
     } catch (e) {
         console.log(e);
@@ -200,8 +201,8 @@ export const storeSize = (data) => async (dispatch) => {
     try {
         const isSucc = await api.post('api/size/store', data);
         if (isSucc) {
-            document.location.href = '/admin/sizes';
             toast.success('Thêm size thành công !');
+            document.location.href = '/admin/sizes';
         }
     } catch (e) {
         console.log(e);
@@ -510,7 +511,7 @@ export const updateSize = (size) => async (dispatch) => {
         const data = await api.put(`api/size/${size.id}`, size);
         console.log(data);
         if (data) {
-           // document.location.href = '/admin/sizes';
+            // document.location.href = '/admin/sizes';
             toast.success('Cập nhật size thành công !');
         }
     } catch (e) {

@@ -180,30 +180,51 @@ const Product = () => {
     }
     if (check === false) {
       return (
+        // <a></a>
         <div className="icon">
-          <i className="icon_heart_alt"></i>
+          <i className="icon_heart_alt" style={{color: 'red'}}></i>
         </div>
       );
     } else {
       return (
+        // <a>Đã Yêu Thích Sản Phẩm</a>
         <div className="icon">
-          <i className="icon_heart"></i>
+          <i className="icon_heart" style={{color: 'red'}}></i>
         </div>
       );
     }
   };
 
-  const [activePage, setCurrentPage] = useState(1);
+  const [activePage, setActivePage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [count, setCount] = useState(3);
 
-  const indexOfLastTodo = activePage * 12;
-
-  const indexOfFirstTodo = indexOfLastTodo - 12;
-
-  const currentTodos = showPro.slice(indexOfFirstTodo, indexOfLastTodo);
-
+  const last = currentPage * count;
+  const first = last - count;
+  const currentTodos = showPro.slice(first, last);
+  const npage = Math.ceil(showPro.length / count);
+  const btnCount = []
+  for (let i = 1; i <= Math.ceil(showPro.length / count); i++) {
+    btnCount.push(i);
+  }
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    setActivePage(pageNumber);
   };
+
+  const prePage = (a) => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+      setActivePage(a);
+    }
+  }
+
+  const nextPage = (a) => {
+    if (currentPage !== npage) {
+      setCurrentPage(currentPage + 1);
+      setActivePage(a);
+    }
+  }
 
   const formatVND = (value) => {
     return new Intl.NumberFormat('vi-VN', {
@@ -247,7 +268,7 @@ const Product = () => {
   }, [dispatch]);
 
   return (
-    <div id="news" className="second" style={{ paddingTop: '60px' }}>
+    <div id="live" className="second" style={{ paddingTop: '60px' }}>
       <div className="articleList">
         <h1 className="title enFont">
           <div className="bar">
@@ -300,14 +321,15 @@ const Product = () => {
                 {currentTodos.length !== 0 ? (
                   currentTodos.map((value, key) => {
                     return (
-                      <li className='thumb border' style={{ marginLeft: '-1%', height: '304px', marginBottom: '3%' }}>
+                      // <ul className='thumbList flex post imgHover'>
+                      <li className='thumb border' style={{ marginLeft: '-1%', height: '288px', marginBottom: '3%' }}>
                         <div
                           key={key}
                           className=''
                         >
                           <Link
                             to={`/product/${value.slug}`}
-                            target
+                            // target
                             onClick={() =>
                               localStorage.setItem(
                                 'proCate',
@@ -318,28 +340,38 @@ const Product = () => {
                             <img
                               src={`http://localhost:8080/uploads/products/${checkImage(key)}`}
                               alt="アクリルスタンド"
+                              style={{ zIndex: '-1' }}
                             />
                             <div className='mask'>
-                              <div className='caption'>
+                              <div className='caption' style={{ width: '', height: '' }}>
                                 {value.priceDiscount !==
                                   0 ? (
-                                  <div className="">
-                                    Sale
+                                  <div className="ariaSale">
+                                    <a className target>
+                                      <img src="./assets/common/imgs/Sale_aria.png" alt="セール" />
+                                      <img src="./assets/common/imgs/Sale_aria.png" alt="セール" className="blur" />
+                                    </a>
                                   </div>
                                 ) : (
-                                  <div></div>
-                                )}
-                                {handleCheckFavorite(
-                                  value._id
+                                  <></>
                                 )}
 
-                                <div>
+                                {/* <div>
                                   {checkCate(value.categoryId)}
-                                </div>
+                                </div> */}
                                 <p style={{ fontSize: '20px' }}>
                                   {value.name}
                                 </p>
-                                {value.priceDiscount !==
+                                <Link to={`/product/${value.slug}`} onClick={() =>
+                                  localStorage.setItem(
+                                    'proCate',
+                                    value.categoryId
+                                  )}>Chi Tiết</Link>
+                                <br />
+                                {handleCheckFavorite(
+                                  value._id
+                                )}
+                                {/* {value.priceDiscount !==
                                   0 ? (
                                   <div className="">
                                     {formatVND(
@@ -358,13 +390,13 @@ const Product = () => {
                                       value.price
                                     )}
                                   </div>
-                                )}
+                                )} */}
                               </div>
                             </div>
                           </Link>
                         </div>
                       </li>
-
+                      // </ul>
                     );
                   })
                 ) : (
@@ -373,6 +405,8 @@ const Product = () => {
                   </div>
                 )}
               </ul>
+              {/* <ul className='thumbList flex post imgHover'></ul> */}
+
               {/* Tsugi e */}
               {/* <ul className="thumbList flex post imgHover">
                 <li className="thumb border" style={{ marginLeft: '-1%' }}>
@@ -404,6 +438,25 @@ const Product = () => {
                 </li>
               </ul> */}
             </div>
+            {/* Pagination */}
+            <div className="pager">
+              <ul className='listPage'>
+                {
+                  btnCount.map((btn) =>
+                    <li key={btn} className={btn == activePage ? "select" : ""} onClick={() => handlePageChange(btn)} style={{ cursor: 'cell' }}>
+                      <a>{btn}</a>
+                    </li>
+                  )
+                }
+              </ul>
+              {/* <span className="m-pagenation__next" style={{ paddingRight: '5%' }}>
+                <a onClick={prePage}>PREV</a>
+              </span>
+              <span className="m-pagenation__next" style={{ paddingLeft: '5%' }}>
+                <a onClick={nextPage}>Next</a>
+              </span> */}
+            </div>
+            {/* End of Pagination */}
           </div>
         </div>{/* ichiran */}
         <span className="next_posts_link" style={{ display: 'none' }}>
@@ -419,6 +472,7 @@ const Product = () => {
         </div>
       </div>
     </div >
+
   )
 }
 

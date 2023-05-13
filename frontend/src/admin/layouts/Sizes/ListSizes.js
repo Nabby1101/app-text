@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deleteSizes, getSizes } from '../../../redux/actions/productActions';
 import SizeTable from '../../components/table/SizeTable';
 
 const ListSizes = () => {
-    let { url } = useLocation();
+    let { url } = useRouteMatch();
     const dispatch = useDispatch();
     const [deleteItems, setDeleteItems] = useState([]);
     const lstSizes = useSelector((state) => state.product.sizes_list);

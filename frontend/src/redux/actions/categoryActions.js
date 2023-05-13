@@ -47,14 +47,14 @@ export const getTrashCategories = () => async (dispatch) => {
 //GET ACTIONS END
 
 //POST ACTIONS BEGIN
-export const storeCategory = (data, file) => async (dispatch) => {
+export const storeCategory = ( data ) => async (dispatch) => {
 
-    console.log(data);
+    console.log("data category ben Actions", data);
     try {
         const isSuccess = await api.post('api/category/store', data);
         if (isSuccess) {
-            // document.location.href = '/admin/categories';
             toast.success('Thêm danh mục sản phẩm thành công !');
+            document.location.href = '/admin/categories';
         }
     } catch (e) {
         console.log(e);

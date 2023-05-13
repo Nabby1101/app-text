@@ -15,8 +15,8 @@ class CategoryController {
 
     // [POST] /store
     store(req, res, next) {
-        const info = req.body;
-        console.log('file', info)
+        const info = JSON.parse(req.body.infos);
+        console.log('backend categoryController', info)
         // var imagesArray = [];
         // let arr = '';
         let image_path = ''

@@ -16,6 +16,7 @@ import {
 import AddField from '../../add/AddField';
 import CKEditorField from '../../add/CKEditorField';
 import ImgField from '../../add/ImgField';
+import ImageField from '../../add/ImageField';
 import MultiSelectField from '../../add/MultiSelectField';
 import '../style.scss';
 

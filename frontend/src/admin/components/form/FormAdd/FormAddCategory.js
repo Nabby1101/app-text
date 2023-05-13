@@ -74,6 +74,7 @@ const FormAddCategory = () => {
                     formData.append("image", file[i]);
                 }
                 formData.append("infos", JSON.stringify(value));
+
                 if (save === "true") {
                     dispatch(storeCategory(formData));
                 } else {

@@ -173,7 +173,7 @@ const CategoryTable = (props) => {
                                         {currentTodos.map((value, key) => {
                                             return (
                                                 <tr key={key} id={value._id}>
-                                                    <td>
+                                                    <td className='text-center'>
                                                         <div className="check-input-primary">
                                                             <input
                                                                 className="form-check-input check-admin"

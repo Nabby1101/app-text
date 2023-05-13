@@ -18,6 +18,7 @@ import ProductPage from '../page/ProductPage'
 import ProfilePage from '../page/ProfilePage'
 import RegisterPage from '../page/RegisterPage'
 import SearchPage from '../page/SearchPage'
+import FavoritesProducts from '../components/Other/FavoritesProducts'
 import ADM from '../admin/screens'
 import ErrorPage from '../layouts/error'
 import Load from '../layouts/load'
@@ -54,6 +55,11 @@ const AppRoute = () => {
                     '/category/:slug/:slug/:slug',
                 ]}>
                 <ProductPage />
+            </Route>
+            <Route path='/danh-muc-ua-thich'>
+                <PrivateRoute>
+                    <FavoritesProducts />
+                </PrivateRoute>
             </Route>
             <Route path='/product/:slug'> <ProductDetailPage /></Route>
             <Route path='/gio-hang/check-out'>

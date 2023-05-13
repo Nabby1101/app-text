@@ -1,10 +1,14 @@
 import React, { useEffect, useState, Component } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, Redirect, useRouteMatch } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { Link, Redirect, useHistory, useRouteMatch } from 'react-router-dom';
+import { getCategories } from '../../redux/actions/categoryActions';
+import { getProducts, getSearch } from '../../redux/actions/productActions';
 import './stylePro.scss';
 
 const Category = (props) => {
-
+  const dispatch = useDispatch();
+  let history = useHistory();
   var arrCate = [];
   var [typeCate, setTypeCate] = useState();
   var [actCate, setActCat] = useState();
@@ -17,6 +21,11 @@ const Category = (props) => {
   const lstColor = props.listColor;
   const lstSize = props.listSize;
   const product = useSelector((state) => state.product.product);
+
+  const lstPro = useSelector((state) => state.product.products_list);
+  const [search, setSearch] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+
   let match = useRouteMatch('/category/:slug');
   let match2 = useRouteMatch('/product/:slug');
 
@@ -121,6 +130,49 @@ const Category = (props) => {
   };
 
 
+  //search
+
+  const onChangeHandler = (text) => {
+    let matches = [];
+    if (text.charCodeAt(0) === 43) {
+      toast.warning(
+        'Ký tự bạn nhập không phù hợp. Vui lòng nhập ký tự khác.'
+      );
+      return;
+    }
+    if (lstPro && lstPro.Products) {
+      matches = lstPro.Products.filter((item) => {
+        return item.name.toLowerCase().match(text.toLowerCase());
+      });
+      setSuggestions(matches);
+      setSearch(text);
+    }
+  };
+
+  const onSuggestHandler = (text) => {
+    setSearch('');
+    setSuggestions([]);
+    if (text.length !== 0) {
+      dispatch(getSearch(text.toLowerCase()));
+      history.push(`/tim-kiem?key=${text.toLowerCase()}`);
+      setSuggestions([]);
+    }
+  };
+
+  const handleFind = () => {
+    if (search.length !== 0) {
+      dispatch(getSearch(search.toLowerCase()));
+      history.push(`/tim-kiem?key=${search.toLowerCase()}`);
+      setSuggestions([]);
+    }
+  };
+
+  const handleKeypress = (e) => {
+    if (e.charCode === 13) {
+      handleFind();
+    }
+  };
+
   useEffect(() => {
     var arrActCate = '';
     var idCate = '';
@@ -148,7 +200,7 @@ const Category = (props) => {
   return (
     <>
       <div className="navColumn">
-      
+
         {/* <ul className="beforeLine">
           <h1>Trang Phục</h1>
           <li><a href="#">Trung Quốc</a></li>
@@ -161,6 +213,25 @@ const Category = (props) => {
           <li><a href="#">Tóc Giả</a></li>
           <li><a href="#">Figure</a></li>
         </ul> */}
+        <div id="searchBox"  method="get" class="flex">
+          <input
+          id='s-box'
+            value={search}
+            type="text"
+            onChange={(e) =>
+              onChangeHandler(e.target.value)
+            }
+            onBlur={() => {
+              setTimeout(() => {
+                setSuggestions([]);
+              }, 1000)
+            }}
+            onKeyPress={(e) =>
+              handleKeypress(e)}
+            placeholder="キーワードを入力"
+          />
+          <button class="btmHover enFont" type="submit" onClick={handleFind}><span>Tìm Kiếm</span></button>
+        </div>
         <div>
           <h1>Danh Mục</h1>
           <ul className='beforeLine'>
@@ -295,9 +366,9 @@ const Category = (props) => {
                                   value.code,
                               }}
                             ></div>
-                            <div className="name-color">
+                            <a className="name-color">
                               {value.name}
-                            </div>
+                            </a>
                           </Link>
                         </div>
                       );

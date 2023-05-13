@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { USER_INFO_RESET } from '../../constants/userConstant';
 import { updateUserInfo } from '../../redux/actions/userActions';
 const Profile = () => {
@@ -194,12 +194,14 @@ const Profile = () => {
                                         id="showimg"
                                         src='assets/common/imgs/avtMale.jpg'
                                         alt='アバター'
+                                        style={{borderRadius: '50%'}}
                                     />
                                 ) : (
                                     <img
                                         id="showimg"
-                                        src='assets/common/imgs/avtFemale.jpg'
+                                        src='assets/common/imgs/product_test.jpg'
                                         alt='アバター'
+                                        style={{borderRadius: '50%'}}
                                     />
                                 )}
                             </>
@@ -285,6 +287,7 @@ const Profile = () => {
                                     <p style={{ color: '#FF00e2' }}><strong>*********</strong></p>
                                 </div>
                             </div>
+                            <div><Link to={'/danh-muc-ua-thich'}>Danh mục sản phẩm yêu thích</Link></div>
                         </div>
 
                     ) : (

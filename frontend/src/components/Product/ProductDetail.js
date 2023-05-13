@@ -20,6 +20,9 @@ import {
 } from '../.././redux/actions/productActions';
 import { favoritesAdd, getUser } from '../.././redux/actions/userActions';
 //import './styles/productDetail.scss';
+// import dayjs from 'dayjs';
+// import customParseFormat from 'dayjs/plugin/customParseFormat';
+
 
 const ProductDetail = () => {
 
@@ -145,7 +148,7 @@ const ProductDetail = () => {
   const getStar = () => {
     if (pro) {
       return (
-        <div className="pd-rating star-pro">
+        <span className="pd-rating star-pro">
           <i
             className={
               pro.rating >= 1
@@ -191,8 +194,8 @@ const ProductDetail = () => {
                   : 'fa fa-star-o'
             }
           />
-          <span>({pro.numReviews})</span>
-        </div>
+          <span>&nbsp;&nbsp;({pro.numReviews})</span>
+        </span>
       );
     }
   };
@@ -437,44 +440,29 @@ const ProductDetail = () => {
         <div className="commonWidth commonPadding">
           {/* 商品紹介 ---------------------------- */}
           <div className="flex main">
-            <div className="info enFont" style={{float: 'left'}}>
+            <div className="info enFont" style={{ float: 'left', textAlign: 'left' }}>
               <h1>
-                <b></b>
+                <b>{new Date(
+                  pro.createdAt
+                ).toLocaleDateString()
+                }</b>
+                ___
+                <b>Release</b>
               </h1>
+
+              <h2 style={{ marginBottom: '-5%' }}>
+                <div className=''>Xếp Hạng:&nbsp;
+                  <b style={{ color: '#FF00E2' }}>{getStar()}</b>
+                </div>
+              </h2>
               <h2>
-                <div className="cat"></div>
+                <div className="cat">Sản Phẩm:</div>
                 {pro.name}
               </h2>
-              {/* {localStorage.getItem(
-                'userInfo'
-              ) ? (
-                checkAdd === true ? (
-                  <div
-                    onClick={() =>
-                      handleAddFavorite(
-                        pro._id
-                      )
-                    }
-                    className=""
-                  >
-                    <i className="">Xóa</i>
-                  </div>
-                ) : (
-                  <div
-                    onClick={() =>
-                      handleAddFavorite(
-                        pro._id
-                      )
-                    }
-                    className=""
-                  >
-                    <i className="">Thêm</i>
-                  </div>
-                )
-              ) : null} */}
-              <div className='' style={{ fontSize: '15px' }}>Đã bán: <span>{pro.sold}</span></div>
+
+              <div className='' style={{ fontSize: '15px' }}>※ Đã bán: <span>{pro.sold}</span></div>
               <div className=''>
-                <div className='checkColor' style={{ fontSize: '15px' }}>Màu sắc: </div>
+                <div className='checkColor' style={{ fontSize: '15px' }}>※ Màu sắc: </div>
                 <div className="pd-color-choose">
                   {pro.color ? (
                     pro.color
@@ -512,6 +500,7 @@ const ProductDetail = () => {
                                     checkColor(
                                       value
                                     ),
+                                  cursor: 'pointer',
                                 }}
                               ></div>
                             )}
@@ -526,6 +515,7 @@ const ProductDetail = () => {
                         style={{
                           background:
                             pro.color,
+                          cursor: 'pointer',
                         }}
                       ></div>
                     </div>
@@ -534,7 +524,7 @@ const ProductDetail = () => {
               </div>
               <p>&nbsp;</p>
               <div className=''>
-                <div className='checkSize' style={{ fontSize: '15px' }}>Kích thước: 
+                <div className='checkSize' style={{ fontSize: '15px' }}>※ Kích thước:
                   <div className="pd-size-choose">
                     {pro.size ? (
                       pro.size
@@ -544,6 +534,7 @@ const ProductDetail = () => {
                             <div
                               key={key}
                               className="sc-item1"
+                              style={{ marginBottom: '2%' }}
                             >
                               {/* <input
                                 type="radio"
@@ -554,7 +545,8 @@ const ProductDetail = () => {
                                 <div
                                   className="active"
                                   style={{
-                                    background: '#FF00E2'
+                                    background: '#FF00E2',
+                                    border: '1px solid black',
                                   }}
                                 >
                                   {checkSize(
@@ -569,7 +561,9 @@ const ProductDetail = () => {
                                       value
                                     )
                                   }
-                                  
+                                  style={{
+                                    cursor: 'pointer',
+                                  }}
                                 >
                                   {checkSize(
                                     value
@@ -592,12 +586,43 @@ const ProductDetail = () => {
                 </div>
               </div>
               <p>&nbsp;</p>
-              <div className='' style={{ width: '100%', fontSize: '15px', float: 'left'}}>
-                Danh mục: {checkMultiCate(pro.categoryId)}
+              <div className='' style={{ width: '100%', fontSize: '15px', float: 'left' }}>
+                ※ Danh mục: {checkMultiCate(pro.categoryId)}
               </div>
-              <div>Giá: <span className='cateName'>{formatVND(pro.price)}</span></div>
-              <div>Số lượng còn lại: <span>{pro.quantity}{' '}sản phẩm</span></div>
-              <hr/>
+              <div>※ Giá: <span className='cateName'>{formatVND(pro.price)}</span></div>
+              <div>※ Số lượng còn lại: <span>{pro.quantity}{' '}sản phẩm</span></div>
+              <div>
+                {localStorage.getItem(
+                  'userInfo'
+                ) ? (
+                  checkAdd === true ? (
+                    <span
+                      onClick={() =>
+                        handleAddFavorite(
+                          pro._id
+                        )
+                      }
+                      className="heart-icon"
+                      style={{}}
+                    >※ Click&nbsp;
+                      <i className="icon_heart" style={{ cursor: 'pointer', color: '#FF00E2' }} /> để <span style={{ color: 'red' }}>xóa</span> sản phẩm khỏi danh mục yêu thích
+                    </span>
+                  ) : (
+                    <span
+                      onClick={() =>
+                        handleAddFavorite(
+                          pro._id
+                        )
+                      }
+                      className="heart-icon"
+                      style={{}}
+                    >※ Click&nbsp;
+                      <i className="icon_heart_alt" style={{ cursor: 'pointer', color: '#FF00E2' }} /> để <span style={{ color: '#FF00E2' }}>thêm</span> sản phẩm vào danh mục yêu thích
+                    </span>
+                  )
+                ) : null}
+              </div>
+              <hr />
               <div className='' style={{ width: '100%' }}>
                 {pro.quantity > 0 ? (
                   <div className="quantity">
@@ -616,7 +641,7 @@ const ProductDetail = () => {
                         }
                       />
                     </div>
-                    <br/>
+                    <br />
                     <Link
                       to={location.pathname}
                       onClick={() =>
@@ -630,8 +655,9 @@ const ProductDetail = () => {
                         })
                       }
                       className="btmHover"
+                      style={{ width: '100%' }}
                     >
-                      <span>Thêm Giỏ Hàng</span>
+                      <span>Thêm Vào Giỏ Hàng</span>
                     </Link>
                   </div>
                 ) : (
@@ -657,13 +683,16 @@ const ProductDetail = () => {
             </div>
             <div className="list">
               <h1>
-                <b></b>
+                <b>Thông tin sản phẩm</b>
               </h1>
-              <h2>
-                <div className="cat"></div>
-                Thông tin sản phẩm
-              </h2>
-              <p>※{pro.details}<br /></p>
+              <div
+                className=''
+                dangerouslySetInnerHTML={{
+                  __html: pro.details,
+                }}
+              >
+              </div>
+              {/* <p>※{pro.details}<br /></p> */}
             </div>
             <div className="img">
               {pro.image ? (
@@ -682,70 +711,275 @@ const ProductDetail = () => {
                   alt=""
                 />
               )}
+              <hr />
+              {/* List of img */}
+              <div className='carouselProduct' style={{ border: '1px solid #FF00E2', width: '433px', height: 'auto' }}>
+                <Carousel
+                  swipeable={false}
+                  draggable={false}
+                  showDots={true}
+                  responsive={responsive}
+                  ssr={true} // means to render carousel on server-side.
+                  infinite={true}
+                  autoPlay={true}
+                  autoPlaySpeed={5000}
+                  keyBoardControl={true}
+                  customTransition="all .5"
+                  transitionDuration={500}
+                  containerClass="carousel-container"
+                  removeArrowOnDeviceType={[
+                    'tablet',
+                    'mobile',
+                  ]}
+                  // deviceType={this.props.deviceType}
+                  dotListClass="custom-dot-list-style"
+                  itemClass="carousel-item-padding-40-px"
+                >
+                  {pro.image ? (
+                    pro.image
+                      .split(',')
+                      .map((value, key) => {
+                        return (
+                          <div
+                            key={key}
+                            className="pt col-12"
+                            onClick={() =>
+                              setCount(
+                                key
+                              )
+                            }
+                            style={{ margin: '1%' }}
+                          >
+                            <img
+                              src={`http://localhost:8080/uploads/products/${value}`}
+                              alt=""
+                            />
+                          </div>
+                        );
+                      })
+                  ) : (
+                    <div className="pt">
+                      <img
+                        src="https://admin-demo.nopcommerce.com/images/thumbs/default-image_100.png"
+                        alt=""
+                      />
+                    </div>
+                  )}
+                </Carousel>
+              </div>
+              {/* <hr/> */}
             </div>
-
-            <div>
-              <Carousel
-                swipeable={false}
-                draggable={false}
-                showDots={true}
-                responsive={responsive}
-                ssr={true} // means to render carousel on server-side.
-                infinite={true}
-                autoPlay={true}
-                autoPlaySpeed={5000}
-                keyBoardControl={true}
-                customTransition="all .5"
-                transitionDuration={500}
-                containerClass="carousel-container"
-                removeArrowOnDeviceType={[
-                  'tablet',
-                  'mobile',
-                ]}
-                // deviceType={this.props.deviceType}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px"
-              >
-                {pro.image ? (
-                  pro.image
-                    .split(',')
-                    .map((value, key) => {
-                      return (
-                        <div
-                          key={key}
-                          className="pt col-12"
-                          onClick={() =>
-                            setCount(
-                              key
-                            )
-                          }
-                        >
-                          <img
-                            src={`http://localhost:8080/uploads/products/${value}`}
-                            alt=""
-                          />
-                        </div>
-                      );
-                    })
-                ) : (
-                  <div className="pt">
-                    <img
-                      src="https://admin-demo.nopcommerce.com/images/thumbs/default-image_100.png"
-                      alt=""
-                    />
-                  </div>
-                )}
-              </Carousel>
-            </div>
-
           </div>
           <div>
           </div>
+          <hr />
+          {/* Comment + Evaluate*/}
+          <div className='EvaluateProduct'>
+            <h2>ĐÁNH GIÁ SẢN PHẨM&nbsp;&nbsp;
+              <span style={{ color: '#FF00E2' }}>
+                ({pro.numReviews} Lượt Bình Luận)
+              </span>
+            </h2>
+            <div className="customer-review-option">
+              <div className="comment-option">
+                {pro.reviews ? (
+                  pro.reviews.map(
+                    (value, key) => {
+                      return (
+                        <div
+                          key={
+                            key
+                          }
+                          className="co-item"
+                        >
+                          <div className="avatar-pic">
+                            {value.sex ===
+                              0 ? (
+                              <img
+                                src="assets/common/imgs/avtMale.jpg"
+                                alt=""
+                              />
+                            ) : (
+                              <img
+                                src="assets/common/imgs/avtFemale.jpg"
+                                alt=""
+                              />
+                            )}
+                          </div>
+                          <div className="avatar-text">
+                            <div className="at-rating show-rating">
+                              {Array(
+                                5
+                              )
+                                .fill(
+                                  0
+                                )
+                                .map(
+                                  (
+                                    _,
+                                    i
+                                  ) =>
+                                    i +
+                                    1
+                                )
+                                .map(
+                                  (
+                                    idx
+                                  ) => (
+                                    <i
+                                      key={
+                                        idx
+                                      }
+                                      className={
+                                        idx <=
+                                          value.rating
+                                          ? 'fa fa-star'
+                                          : 'fa fa-star-o'
+                                      }
+                                    />
+                                  )
+                                )}
+                            </div>
+                            <h5>
+                              {
+                                value.name
+                              }{' '}
+                              <span>
+                                {new Date(
+                                  value.createdAt
+                                ).toLocaleDateString()
+                                }
+                              </span>
+                            </h5>
+                            <div className="at-reply">
+                              {
+                                value.comment
+                              }
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  )
+                ) : (
+                  <div className="co-item"></div>
+                )}
+
+                {/* <div className="co-item">
+                  <div className="avatar-pic">
+                    <img
+                      src="assets/img/product-single/avatar-2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div className="avatar-text">
+                    <div className="at-rating">
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star" />
+                      <i className="fa fa-star-o" />
+                    </div>
+                    <h5>
+                      Roy Banks{' '}
+                      <span>
+                        27 Aug 2019
+                      </span>
+                    </h5>
+                    <div className="at-reply">
+                      Nice !
+                    </div>
+                  </div>
+                </div> */}
+              </div>
+              {localStorage.getItem(
+                'userInfo'
+              ) && noComment === false ? (
+                <div className="personal-rating">
+                  <h6>Đánh Giá: &nbsp;</h6>
+                  <Rate
+                    rating={rating}
+                    onRating={(rate) =>
+                      setRating(rate)
+                    }
+                  />
+                </div>
+              ) : null}
+              {localStorage.getItem(
+                'userInfo'
+              ) ? (
+                noComment === false ? (
+                  <div className="leave-comment">
+                    <h4>
+                      Để Lại Bình Luận
+                    </h4>
+                    <form
+                      className="comment-form"
+                      onSubmit={
+                        submitHandler
+                      }
+                    >
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <textarea
+                            placeholder="Bình luận..."
+                            value={
+                              comment
+                            }
+                            onChange={(
+                              e
+                            ) =>
+                              setComment(
+                                e
+                                  .target
+                                  .value
+                              )
+                            }
+                          />
+                          <button
+                            type="submit"
+                            className="btmHover enFont"
+                          >
+                            <span>Gửi</span>
+                          </button>
+                          <div>
+                            {errorReviewCreate && (
+                              <MessageBox variant="danger">
+                                {
+                                  errorReviewCreate
+                                }
+                              </MessageBox>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                ) : null
+              ) : (
+                <MessageBox>
+                  Hãy{' '}
+                  <Link to="/login">
+                    Đăng nhập
+                  </Link>{' '}
+                  để đánh giá sản phẩm !
+                </MessageBox>
+              )}
+            </div>
+          </div>
+          {/* End off Comment + Evluate */}
         </div>
+        {/* Related Product */}
+        <RelatedProducts
+          listCate={lstCate.Categories}
+          slug={slug}
+          cate={cate}
+        />
         <div id="backTop" className="more clearfix" style={{ marginBottom: '50px' }}>
           <Link to="/category" className="btmHover enFont"><span>More Products</span></Link>
         </div>
       </div>{/* #ページ名 */}
+
     </div>
   )
 }

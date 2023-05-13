@@ -20,7 +20,7 @@ import MultiSelectField from '../../add/MultiSelectField';
 import SelectField from '../../add/SelectField';
 import '../style.scss';
 
-const FromAddProduct = () => {
+const FormAddProduct = () => {
     const dispatch = useDispatch();
 
     const [cate, setCate] = useState([]);
@@ -147,10 +147,11 @@ const FromAddProduct = () => {
                 } else {
                     const formData = new FormData();
                     for (let i = 0; i < file.length; i++) {
-                        formData.append('image', file[i]);
+                        formData.append("image", file[i]);
                     }
-                    formData.append('infos', JSON.stringify(value));
-                    if (save === 'true') {
+                    formData.append("infos", JSON.stringify(value));
+
+                    if (save === "true") {
                         dispatch(storeProduct(formData));
                     } else {
                         dispatch(storeProductAndContinue(formData));
@@ -191,7 +192,7 @@ const FromAddProduct = () => {
                                                         type="submit"
                                                         className="main-btn success-btn btn-hover"
                                                         onClick={() =>
-                                                            setSave('true')
+                                                            setSave("true")
                                                         }
                                                     >
                                                         {/* <i className="fas fa-save"></i> */}
@@ -202,7 +203,7 @@ const FromAddProduct = () => {
                                                         type="submit"
                                                         className="main-btn info-btn btn-hover"
                                                         onClick={() =>
-                                                            setSave('false')
+                                                            setSave("false")
                                                         }
                                                     >
                                                         {/* <i className="far fa-save"></i> */}
@@ -233,7 +234,7 @@ const FromAddProduct = () => {
                                                     setFile={setFile}
                                                     name="image"
                                                     id="customFile"
-                                                    component={ImageField}
+                                                    component={ImgField}
                                                 />
                                                 {/* end input */}
                                                 <FastField
@@ -334,4 +335,4 @@ const FromAddProduct = () => {
     );
 };
 
-export default FromAddProduct;
+export default FormAddProduct;

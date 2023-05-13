@@ -19,6 +19,7 @@ class ProductController {
     // [POST] /store
     store(req, res, next) {
         const info = req.body;
+        console.log('backend productController', info)
         let imagesArray = [];
         req.files.forEach((element, key) => {
             imagesArray += element.path.slice(17) + ',';
