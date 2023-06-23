@@ -8,7 +8,8 @@ import { getProducts } from '../../../../redux/actions/productActions';
 import { getTopics } from '../../../../redux/actions/topicActions';
 import AddField from '../../add/AddField';
 import CKEditorField from '../../add/CKEditorField';
-import ImageField from '../../add/ImageField';
+import ImageField from '../../add/ImageField'; /* localhst without 'uploads' path */
+import ImgPostField from '../../add/ImgPostField'; /* localhst with 'uploads' path */
 import MultiSelectField from '../../add/MultiSelectField';
 import SelectField from '../../add/SelectField';
 import '../style.scss';
@@ -71,7 +72,7 @@ const FormEditPost = (props) => {
             .max(1000, 'Mô tả ngắn của bài viết tối đa 1000 kí tự')
             .required('Bạn phải nhập mô tả ngắn cho bài viết'),
         content: Yup.string()
-            .min(2000, 'Nội dung của bài viết tối thiểu 2000 kí tự')
+            .min(1000, 'Nội dung của bài viết tối thiểu 2000 kí tự')
             .required('Bạn phải nhập nội dung cho bài viết'),
         updatedBy: Yup.string().required(
             'Bạn phải nhập tên người sửa bài viết'
@@ -149,7 +150,7 @@ const FormEditPost = (props) => {
                                                         to={`/admin/posts`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -157,7 +158,7 @@ const FormEditPost = (props) => {
                                                         type="submit"
                                                         className="main-btn success-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Cập Nhật
                                                     </button>
                                                 </nav>
@@ -185,7 +186,7 @@ const FormEditPost = (props) => {
                                                     setFile={setFile}
                                                     name="image"
                                                     id="customFile"
-                                                    component={ImageField}
+                                                    component={ImgPostField}
                                                     data={set_post.image}
                                                 />
                                                 {/* end input */}

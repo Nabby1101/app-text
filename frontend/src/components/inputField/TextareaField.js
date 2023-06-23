@@ -24,14 +24,16 @@ export default function TextareaField(props) {
     return (
         <div className={className}>
             {label && <label>{label}<span>*</span></label>}
-            <textarea
-                name={name}
-                rows='5'
-                cols='50'
-                placeholder={placeholder}
-                disabled={disabled}
-                {...field}
-            />
+            <div>
+                <textarea
+                    name={name}
+                    rows='5'
+                    cols='70'
+                    placeholder={placeholder}
+                    disabled={disabled}
+                    {...field}
+                />
+            </div>
         </div>
     )
 }

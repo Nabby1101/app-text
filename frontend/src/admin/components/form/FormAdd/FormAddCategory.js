@@ -105,7 +105,7 @@ const FormAddCategory = () => {
                                                         to={`/admin/categories`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay lại danh sách
                                                     </Link>
                                                     &nbsp;
@@ -116,7 +116,7 @@ const FormAddCategory = () => {
                                                             setSave("true")
                                                         }
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu
                                                     </button>
                                                     &nbsp;
@@ -127,7 +127,7 @@ const FormAddCategory = () => {
                                                             setSave("false")
                                                         }
                                                     >
-                                                        <i className="far fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu và tiếp tục
                                                     </button>
                                                 </nav>
@@ -187,37 +187,49 @@ const FormAddCategory = () => {
                                                             label: "Vật Phẩm Khác",
                                                         },
                                                         {
-                                                            value: "3",
-                                                            label: "Đời Thường",
+                                                            value: '3',
+                                                            label: 'Quần Áo',
                                                         },
                                                         {
-                                                            value: "4",
-                                                            label: "Theo Truyện/Game/Anime",
+                                                            value: '4',
+                                                            label: 'Đồ Đi Kèm',
                                                         },
                                                         {
-                                                            value: "5",
-                                                            label: "Phụ Kiện",
+                                                            value: '5',
+                                                            label: 'Phụ Kiện Lẻ',
                                                         },
-                                                        {
-                                                            value: "6",
-                                                            label: "Tóc Giả",
-                                                        },
-                                                        {
-                                                            value: "7",
-                                                            label: "Figure",
-                                                        },
-                                                        {
-                                                            value: "8",
-                                                            label: "Đồ Đi Kèm"
-                                                        },
-                                                        {
-                                                            value: "9",
-                                                            label: "Trang Phục Đời Thường"
-                                                        },
-                                                        {
-                                                            value: "10",
-                                                            label: "Trang Phục Khác"
-                                                        }
+                                                        // {
+                                                        //     value: "3",
+                                                        //     label: "Đời Thường",
+                                                        // },
+                                                        // {
+                                                        //     value: "4",
+                                                        //     label: "Theo Truyện/Game/Anime",
+                                                        // },
+                                                        // {
+                                                        //     value: "5",
+                                                        //     label: "Phụ Kiện",
+                                                        // },
+                                                        // {
+                                                        //     value: "6",
+                                                        //     label: "Tóc Giả",
+                                                        // },
+                                                        // {
+                                                        //     value: "7",
+                                                        //     label: "Figure",
+                                                        // },
+                                                        // {
+                                                        //     value: "8",
+                                                        //     label: "Đồ Đi Kèm"
+                                                        // },
+                                                        // {
+                                                        //     value: "9",
+                                                        //     label: "Trang Phục Đời Thường"
+                                                        // },
+                                                        // {
+                                                        //     value: "10",
+                                                        //     label: "Trang Phục Khác"
+                                                        // }
                                                     ]}
                                                 />
                                                 {/* end input */}

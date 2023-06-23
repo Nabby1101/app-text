@@ -107,7 +107,7 @@ const FormAddVoucher = (props) => {
                                                         to={`/admin/vouchers`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -118,7 +118,7 @@ const FormAddVoucher = (props) => {
                                                             setSave('true')
                                                         }
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu
                                                     </button>
                                                     &nbsp;
@@ -129,7 +129,7 @@ const FormAddVoucher = (props) => {
                                                         //     setSave('false')
                                                         // }
                                                     >
-                                                        <i className="far fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu Và Tiếp Tục
                                                     </button>
                                                 </nav>

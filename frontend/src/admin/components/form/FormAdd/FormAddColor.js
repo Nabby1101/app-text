@@ -86,7 +86,7 @@ const FormAddColor = () => {
                                                         to={`/admin/colors`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -97,7 +97,7 @@ const FormAddColor = () => {
                                                             setSave("true")
                                                         }
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu
                                                     </button>
                                                     &nbsp;
@@ -108,7 +108,7 @@ const FormAddColor = () => {
                                                             setSave("false")
                                                         }
                                                     >
-                                                        <i className="far fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu và tiếp tục
                                                     </button>
                                                 </nav>

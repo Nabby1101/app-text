@@ -5,13 +5,16 @@ function ADM() {
     return (
         <HelmetProvider>
             <Helmet>
-                <link rel="stylesheet" href="admin/assets/css/bootstrap.min.css" />
-                <link rel="stylesheet" href="admin/assets/css/lineicons.css" />
-                <link rel="stylesheet" href="admin/assets/css/materialdesignicons.min.css" />
-                <link rel="stylesheet" href="admin/assets/css/fullcalendar.css" />
-                <link rel="stylesheet" href="admin/assets/css/main.css" />
+                <link rel="stylesheet" href="admin/assets/css/bootstrap.min.css"></link>
+                <link rel="stylesheet" href="admin/assets/css/lineicons.css"></link>
+                <link rel="stylesheet" href="admin/assets/css/materialdesignicons.min.css"></link>
+                <link rel="stylesheet" href="admin/assets/css/fullcalendar.css"></link>
+                <link rel="stylesheet" href="admin/assets/css/main.css"></link>
+
             </Helmet>
+
             <HomeAdmin />
+            
             <Helmet>
                 <script src="admin/assets/js/bootstrap.bundle.min.js"></script>
                 <script src="admin/assets/js/Chart.min.js"></script>

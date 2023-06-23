@@ -77,11 +77,11 @@ const FromEditSize = (props) => {
                                                         to={`/admin/sizes`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>&ensp;Back To List
+                                                        <i className="fa fa-chevron-circle-left"></i>&ensp;Back To List
                                                     </Link>
                                                     &nbsp;
                                                     <button type='submit' className="main-btn success-btn btn-hover">
-                                                        <i className="fas fa-save"></i>&ensp;Save Edit
+                                                        <i className="fa fa-save"></i>&ensp;Save Edit
                                                     </button>
                                                 </nav>
                                             </div>

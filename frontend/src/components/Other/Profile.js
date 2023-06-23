@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { USER_INFO_RESET } from '../../constants/userConstant';
 import { updateUserInfo } from '../../redux/actions/userActions';
+import AvatarEditor from 'react-avatar-editor';
 const Profile = () => {
     const dispatch = useDispatch();
     const [checkEditInfo, setCheckEditInfo] = useState(false);
@@ -23,20 +24,22 @@ const Profile = () => {
         `http://localhost:8080/uploads/users/${userInfo.avatar}`
     );
     const [file, setFile] = useState([]);
+    const [position, setPosition] = useState([]);
     const [urlImage, setUrlImage] = useState('');
 
     const handleChangeImage = async (value) => {
         var output = document.getElementById('showImg');
         setUrlImage(output.src);
+        console.log(setUrlImage);
         output.src = URL.createObjectURL(value[0]);
         setImage(output.src);
         if (output) {
             output.onload = function () {
                 var height = this.height;
                 var width = this.width;
-                if (width > 460 || height > 460) {
+                if (width > 2000 || height > 2000) {
                     toast.warn(
-                        'Kích thước hình ảnh không được vượt qua 160 x 160'
+                        'Kích thước hình ảnh không được vượt qua 460 x 460'
                     );
                     output.src = urlImage;
                     return;
@@ -149,18 +152,18 @@ const Profile = () => {
                                     <img
                                         src={`${image}`}
                                         // src='http://localhost:8080/uploads/users/Egoist.jpg'
-                                        id="showimg"
+                                        id="showImg" className='avt'
                                         alt="アバター"
                                     />
                                 ) : userInfo.sex === 0 ? (
                                     <img
-                                        id="showimg"
+                                        id="showImg" className='avt'
                                         src="assets/common/imgs/avtMale.jpg"
                                         alt='アバター'
                                     />
                                 ) : (
                                     <img
-                                        id="showimg"
+                                        id="showImg" className='avt'
                                         src="assets/common/imgs/avtFemale.jpg"
                                         alt='アバター'
                                     />
@@ -170,17 +173,18 @@ const Profile = () => {
                                     type="file"
                                     id="chooseAVT"
                                     name="avatar"
-                                    onChange={(e) => handleChangeImage(
-                                        e
-                                            .target
-                                            .files
-                                    )}
+                                    onChange={(e) =>
+                                        handleChangeImage(
+                                            e
+                                                .target
+                                                .files
+                                        )}
                                 />
                                 <label
                                     htmlFor='chooseAVT'
-                                    className=''
+                                    className='btmHover'
                                 >
-                                    Chọn Hình
+                                    <span>Chọn Hình</span>
                                 </label>
                             </>
                         ) : (
@@ -188,20 +192,19 @@ const Profile = () => {
                                 {userInfo.avatar ? (
                                     <img
                                         src={image} alt="アバター"
+                                        style={{ float: 'left', width: '460px', height: '460px', borderRadius: '50%', marginLeft: '-20%' }}
                                     />
                                 ) : userInfo.sex === 0 ? (
                                     <img
-                                        id="showimg"
+                                        id="showImg" className='avt'
                                         src='assets/common/imgs/avtMale.jpg'
                                         alt='アバター'
-                                        style={{borderRadius: '50%'}}
                                     />
                                 ) : (
                                     <img
-                                        id="showimg"
-                                        src='assets/common/imgs/product_test.jpg'
+                                        id="showImg" className='avt'
+                                        src='assets/common/imgs/avtFemale.jpg'
                                         alt='アバター'
-                                        style={{borderRadius: '50%'}}
                                     />
                                 )}
                             </>
@@ -287,7 +290,6 @@ const Profile = () => {
                                     <p style={{ color: '#FF00e2' }}><strong>*********</strong></p>
                                 </div>
                             </div>
-                            <div><Link to={'/danh-muc-ua-thich'}>Danh mục sản phẩm yêu thích</Link></div>
                         </div>
 
                     ) : (
@@ -433,17 +435,18 @@ const Profile = () => {
                     <div className=''>
                         {checkEditInfo === false ? (
                             <div>
-                            <button
-                                className='registerbtn'
-                                target
-                                style={{ width: "70%", marginLeft: '15%' }}
-                                onClick={() =>
-                                    setCheckEditInfo(true)
-                                }
-                            >
-                                <span>Chỉnh sửa thông tin cá nhân</span>
-                            </button>
-                            <hr/>
+                                <button
+                                    className='registerbtn'
+                                    target
+                                    style={{ width: "70%", marginLeft: '15%' }}
+                                    onClick={() =>
+                                        setCheckEditInfo(true)
+                                    }
+                                >
+                                    <span>Chỉnh sửa thông tin cá nhân</span>
+                                </button>
+                                <hr />
+                                {/* <Link to={'/danh-muc-ua-thich'}>favorites</Link> */}
                             </div>
                         ) : (
                             <>

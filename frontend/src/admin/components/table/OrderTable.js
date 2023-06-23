@@ -238,8 +238,8 @@ const OrderTable = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="table-wrapper table-responsive">
-                            <table className="table table-bordered order-table text-center">
+                        <div className="table-wrapper table-responsive text-center">
+                            <table className="table table-bordered order-table">
                                 <thead>
                                     <tr>
                                         <th>
@@ -437,7 +437,7 @@ const OrderTable = (props) => {
                                                                         to={`${url}/${value._id}`}
                                                                         className="text-primary"
                                                                     >
-                                                                        <i className="fas fa-info-circle"></i>
+                                                                        <i className="fa fa-info-circle" style={{fontSize: '33px', color: '#FF00E2'}}></i>
                                                                     </Link>
                                                                 </div>
                                                             </td>

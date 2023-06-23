@@ -227,7 +227,7 @@ const CheckOut = (props) => {
         >
             {(FormikProps) => {
                 return (
-                    <div id="" className="" style={{ paddingTop: '160px', marginBottom: '-5%' }}>
+                    <div id="contact" className="second" style={{ paddingTop: '160px', marginBottom: '-5%' }}>
                         <Form>
                         <div className='checkout50'>
                             <div className='checkoutz' style={{ borderRight: '1px solid black' }}>
@@ -318,10 +318,10 @@ const CheckOut = (props) => {
                                             label="Lưu Ý"
                                             component={TextareaField}
                                             rows="6"
-                                            className=""
+                                            className="jpFont" required
                                             id="note"
                                             placeholder="Nhập Lưu Ý"
-                                        /> <hr />
+                                        />
 
                                         {/* <div className="col-lg-12">
                                                 <div className="create-item">
@@ -340,7 +340,7 @@ const CheckOut = (props) => {
                                 <hr />
                                 <div className="discount-coupon checkout-cp">
                                     {checkCode === false ? (
-                                        <div className="coupon-form input-code-voucher">
+                                        <div className="voucher">
                                             <input
                                                 id="cancelCode"
                                                 type="text"
@@ -352,7 +352,7 @@ const CheckOut = (props) => {
                                                             .value
                                                     )
                                                 }
-                                                style={{ textDecoration: 'none', color: 'black', width: '80%' }}
+                                                style={{ textDecoration: 'none', color: 'black' }}
                                             />
                                             <button
                                                 type="button"
@@ -365,17 +365,17 @@ const CheckOut = (props) => {
                                             </button>
                                         </div>
                                     ) : (
-                                        <div className="coupon-form input-code-voucher">
+                                        <div className="voucher">
                                             <input
                                                 id="cancelCode"
                                                 type="text"
-                                                className="voucher-code text-uppercase code-voucher"
+                                                className="voucher-applied"
                                                 placeholder="Nhập Mã Giảm Giá"
                                                 disabled
                                             />
                                             <button
                                                 type="button"
-                                                className="site-btn coupon-btn code-submit-btn"
+                                                className="btmHover enFont voucherbtn"
                                                 onClick={() =>
                                                     handleVoucherCancel()
                                                 }

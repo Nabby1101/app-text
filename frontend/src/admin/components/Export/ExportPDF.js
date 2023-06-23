@@ -32,7 +32,7 @@ const ExportPDF = () => {
                 className="main-btn success-btn btn-hover"
                 onClick={() => printDocument()}
             >
-                <i className="fas fa-save"></i>
+                <i className="fa fa-save"></i>
                 &ensp;Export PDF
             </button>
         </div>

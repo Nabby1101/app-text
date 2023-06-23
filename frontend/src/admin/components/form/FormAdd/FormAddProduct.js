@@ -27,7 +27,7 @@ const FormAddProduct = () => {
     const [colors, setColors] = useState([]);
     const [sizes, setSizes] = useState([]);
     const [file, setFile] = useState([]);
-    const [save, setSave] = useState('true');
+    const [save, setSave] = useState("true");
     const lstCate = useSelector((state) => state.category.categories);
     const lstColors = useSelector((state) => state.product.colors_list);
     const lstSizes = useSelector((state) => state.product.sizes_list);
@@ -148,10 +148,20 @@ const FormAddProduct = () => {
                     const formData = new FormData();
                     for (let i = 0; i < file.length; i++) {
                         formData.append("image", file[i]);
-                    }
-                    formData.append("infos", JSON.stringify(value));
-
-                    if (save === "true") {
+                    }                  
+                    // formData.append("infos", JSON.stringify(value));
+                    formData.set("name", value.name);
+                    formData.set("categoryId", value.categoryId);
+                    formData.set("color", value.color);
+                    formData.set("size", value.size);
+                    formData.set("details", value.details);
+                    formData.set("type", value.type);
+                    formData.set("price", value.price);
+                    formData.set("priceDiscount", value.priceDiscount);
+                    formData.set("quantity", value.quantity);
+                    formData.set("status", value.status);
+                    console.log('formAddProduct', formData);
+                    if (save === true || save === "true") {
                         dispatch(storeProduct(formData));
                     } else {
                         dispatch(storeProductAndContinue(formData));
@@ -184,7 +194,7 @@ const FormAddProduct = () => {
                                                         to={`/admin/products`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        {/* <i className="fas fa-chevron-circle-left"></i> */}
+                                                        {/* <i className="fa fa-chevron-circle-left"></i> */}
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -195,7 +205,7 @@ const FormAddProduct = () => {
                                                             setSave("true")
                                                         }
                                                     >
-                                                        {/* <i className="fas fa-save"></i> */}
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu
                                                     </button>
                                                     &nbsp;
@@ -206,7 +216,7 @@ const FormAddProduct = () => {
                                                             setSave("false")
                                                         }
                                                     >
-                                                        {/* <i className="far fa-save"></i> */}
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu Và Tiếp Tục
                                                     </button>
                                                 </nav>

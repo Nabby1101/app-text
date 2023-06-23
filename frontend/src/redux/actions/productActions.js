@@ -45,6 +45,7 @@ import {
     SIZE_RESTORE_SUCCESS,
     SIZE_RESTORE_FAIL,
 } from '../../constants/productConstant';
+import axios from 'axios';
 
 //GET ACTIONS BEGIN
 
@@ -149,27 +150,27 @@ export const getTrashSizes = () => async (dispatch) => {
 //GET ACTIONS END
 
 //POST ACTIONS BEGIN
-export const storeProduct = (data) => async (dispatch) => {
+export const storeProduct = (formData) => async (dispatch) => {
 
-    console.log("data product ben actions", data);
+    console.log("data product ben actions", formData);
     try {
-        const isSucc = await api.post('api/product/store', data);
+        const isSucc = await api.post('api/product/store', formData);
         if (isSucc) {
             toast.success('Thêm sản phẩm thành công !');
-            //document.location.href = '/admin/products';
+            document.location.href = '/admin/products';
         }
     } catch (e) {
         console.log(e);
     }
 };
 
-export const storeProductAndContinue = (data) => async (dispatch) => {
+export const storeProductAndContinue = (formData) => async (dispatch) => {
     try {
-        const isSucc = await api.post('api/product/store', data);
+        const isSucc = await api.post('api/product/store', formData);
         if (isSucc) {
             toast.success('Thêm sản phẩm thành công !');
         }
-    } catch (e) {   
+    } catch (e) {
         console.log(e);
     }
 };

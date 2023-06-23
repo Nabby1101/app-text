@@ -104,7 +104,7 @@ const OrderHistory = (props) => {
                                                     <span>
                                                         {item.isPaid ? (
                                                             <b className="text-success">
-                                                                Thanh toán lúc: {item.paidAt.substring(
+                                                                {item.paidAt.substring(
                                                                     0,
                                                                     10
                                                                 )}
@@ -137,7 +137,7 @@ const OrderHistory = (props) => {
                                                             'Delivered' ? (
                                                             <span className="text-success">
                                                                 <b>
-                                                                    Giao hàng lúc: {item.deliveredAt.substring(
+                                                                    {item.deliveredAt.substring(
                                                                         0,
                                                                         10
                                                                     )}
@@ -169,9 +169,9 @@ const OrderHistory = (props) => {
                                                     //         `/order/${item._id}`
                                                     //     );
                                                     // }}
-                                                    className=""
+                                                    className="fa fa-info-circle text-primary"
                                                     style={{ fontSize: '32px', color: 'red', textDecoration: 'none'}}
-                                                >!</Link>
+                                                ></Link>
                                             </td>
                                         </tr>
                                     );

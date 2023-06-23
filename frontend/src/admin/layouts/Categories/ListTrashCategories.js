@@ -38,13 +38,13 @@ const ListTrashCategories = () => {
                         });
                     }}
                 >
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
                 </button>
             );
         } else {
             return (
                 <button className="main-btn danger-btn-outline" disabled>
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
                 </button>
             );
         }
@@ -73,13 +73,13 @@ const ListTrashCategories = () => {
                         });
                     }}
                 >
-                    <i className="fas fa-minus-circle"></i>&ensp;Phục Hồi
+                    <i className="fa fa-eraser"></i>&ensp;Phục Hồi
                 </button>
             );
         } else {
             return (
                 <button className="main-btn info-btn-outline" disabled>
-                    <i className="fas fa-minus-circle"></i>&ensp;Phục Hồi
+                    <i className="fa fa-eraser"></i>&ensp;Phục Hồi
                 </button>
             );
         }
@@ -109,7 +109,7 @@ const ListTrashCategories = () => {
                                         to="/admin/categories"
                                         className="main-btn secondary-btn btn-hover"
                                     >
-                                        <i className="fas fa-clipboard-list"></i>
+                                        <i className="fa fa-clipboard-list"></i>
                                         &ensp;Danh Sách Danh Mục
                                     </Link>
                                     &nbsp;

@@ -57,13 +57,17 @@ class CategoryController {
     // [PUT] /:id
     update(req, res, next) {
         const info = JSON.parse(req.body.infos);
-        let imagesArray = info.image;
-        let arr = '';
+        console.log('backend categoryController', info)
+        // var imagesArray = [];
+        // let arr = '';
+        let image_path = ''
+
         if (req.file) {
-            req.file.forEach((element, key) => {
-                arr += element.path.slice(20) + ',';
-            });
-            imagesArray = arr.slice(0, -1);
+            // req.file.forEach((element, key) => {
+            //     arr += element.path.slice(20) + ',';
+            // });
+            // imagesArray = arr.slice(0, -1);
+            image_path = req.file.path
         }
 
         categoryModel
@@ -71,7 +75,7 @@ class CategoryController {
                 { _id: req.params.id },
                 {
                     name: info.name,
-                    image: imagesArray,
+                    image: image_path,
                     parentCate: info.parentCate,
                     type: info.type,
                     status: info.status,

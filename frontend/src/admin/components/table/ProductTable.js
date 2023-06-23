@@ -175,7 +175,7 @@ const ProductTable = (props) => {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="card-style mb-30">
-                        <div className="table-wrapper table-responsive">
+                        <div className="table-wrapper table-responsive text-center">
                             <table className="table table-bordered">
                                 <thead>
                                     <tr className='text-center'>
@@ -188,7 +188,7 @@ const ProductTable = (props) => {
                                         <th>
                                             <h6>Hình Ảnh</h6>
                                         </th>
-                                        <th>
+                                        <th style={{maxWidth: '100px'}}>
                                             <h6>Danh Mục</h6>
                                         </th>
                                         <th>
@@ -199,6 +199,9 @@ const ProductTable = (props) => {
                                         </th>
                                         <th>
                                             <h6>Số Lượng Tồn Kho</h6>
+                                        </th>
+                                        <th>
+                                            <h6>Đã Bán</h6>
                                         </th>
                                         <th>
                                             <h6>Size</h6>
@@ -259,7 +262,7 @@ const ProductTable = (props) => {
                                                             alt=""
                                                         />
                                                     </td>
-                                                    <td className="min-width">
+                                                    <td className="min-width" style={{maxWidth: '250px'}}>
                                                         {checkCate(
                                                             value.categoryId
                                                         )}
@@ -276,6 +279,9 @@ const ProductTable = (props) => {
                                                     </td>
                                                     <td className="min-width">
                                                         <p>{value.quantity}</p>
+                                                    </td>
+                                                    <td className='min-width'>
+                                                        <p>{value.sold}</p>
                                                     </td>
                                                     <td className="min-width">
                                                         {checkSize(value.size)}
@@ -311,7 +317,7 @@ const ProductTable = (props) => {
                                                                             }
                                                                             title="Show"
                                                                         >
-                                                                            <i className="">Hiện</i>
+                                                                            <i className="fa fa-eye" style={{fontSize: '33px'}}></i>
                                                                         </button>
                                                                     ) : (
                                                                         <button
@@ -325,7 +331,7 @@ const ProductTable = (props) => {
                                                                             }
                                                                             title="Hidden"
                                                                         >
-                                                                            <i className="">Ẩn</i>
+                                                                            <i className="fa fa-eye-slash" style={{fontSize: '33px'}}></i>
                                                                         </button>
                                                                     )}
                                                                 </div>
@@ -337,14 +343,14 @@ const ProductTable = (props) => {
                                                                         className="text-primary"
                                                                         title="Edit"
                                                                     >
-                                                                        <p className='text-center' style={{color: '#FF00E2'}}>Chỉnh sửa</p>
+                                                                        <i className='fa fa-pencil-square' style={{fontSize: '33px', color: '#FF00E2'}}></i>
                                                                     </Link>
                                                                     <Link
                                                                         to={`${url}/comment&${value._id}`}
                                                                         className="text-success"
                                                                         title="Comment"
                                                                     >
-                                                                        <i className="lni lni-bubble"></i>
+                                                                        <i className="lni lni-bubble" style={{fontSize: '33px', color: '#FF00E2'}}></i>
                                                                     </Link>
                                                                 </div>
                                                             </td>

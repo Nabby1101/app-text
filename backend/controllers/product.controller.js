@@ -158,21 +158,21 @@ class ProductController {
             const hidden = { status: '0' };
             product.status === '1'
                 ? productModel
-                      .findOneAndUpdate({ _id: product.id }, hidden, {
-                          returnOriginal: false,
-                      })
-                      .then((Pro) => res.send({ message: 'hidden', pro: Pro }))
-                      .catch(() =>
-                          res.send({ message: 'Product Not Found !!!' })
-                      )
+                    .findOneAndUpdate({ _id: product.id }, hidden, {
+                        returnOriginal: false,
+                    })
+                    .then((Pro) => res.send({ message: 'hidden', pro: Pro }))
+                    .catch(() =>
+                        res.send({ message: 'Product Not Found !!!' })
+                    )
                 : productModel
-                      .findOneAndUpdate({ _id: req.params.id }, show, {
-                          returnOriginal: false,
-                      })
-                      .then((Pro) => res.send({ message: 'show', pro: Pro }))
-                      .catch(() =>
-                          res.send({ message: 'Product Not Found !!!' })
-                      );
+                    .findOneAndUpdate({ _id: req.params.id }, show, {
+                        returnOriginal: false,
+                    })
+                    .then((Pro) => res.send({ message: 'show', pro: Pro }))
+                    .catch(() =>
+                        res.send({ message: 'Product Not Found !!!' })
+                    );
         } catch (error) {
             res.send({ error: 'Error' });
         }
@@ -212,27 +212,57 @@ class ProductController {
     }
 
     // [PATCH] /decreaseQty
-    decreaseQty(req, res, next) {
+    // decreaseQty(req, res, next) {
+    //     try {
+    //         req.body.orderItems.forEach(async (value) => {
+    //             var pro = await productModel.findOne({ _id: value.id });
+    //             if (!pro) {
+    //                 res.send('Product not found !');
+    //             } else {
+    //                 var decrQty = {
+    //                     quantity: value.inStock - value.quantity,
+    //                     sold: pro.sold + value.quantity,
+    //                 };
+    //                 productModel.findOneAndUpdate({ _id: value.id }, decrQty, {
+    //                     returnOriginal: false,
+    //                 });
+    //                 console.log('Product updated: ', decrQty);
+    //             }
+    //         });
+    //         res.send('Decrease Quantity Successfully !!!');
+    //     } catch (error) {
+    //         console.log("Error: ", error);
+    //         res.json({ error: error });
+    //     }
+    // }
+
+    async decreaseQty(req, res, next) {
         try {
-            req.body.orderItems.forEach(async (value) => {
-                var pro = await productModel.findOne({ _id: value.id });
-                if (!pro) {
-                    res.send('Product not found !');
-                } else {
-                    var decrQty = {
+            if (req.body.orderItems && Array.isArray(req.body.orderItems)) {
+                for (const value of req.body.orderItems) {
+                    const pro = await productModel.findOne({ _id: value.id });
+                    if (!pro) {
+                        return res.send('Product not found!');
+                    }
+                    const decrQty = {
                         quantity: value.inStock - value.quantity,
                         sold: pro.sold + value.quantity,
                     };
-                    productModel.findOneAndUpdate({ _id: value.id }, decrQty, {
+                    const updatedPro = await productModel.findOneAndUpdate({ _id: value.id }, decrQty, {
                         returnOriginal: false,
                     });
+                    console.log('Product updated: ', updatedPro);
                 }
-            });
-            res.send('Decrease Quantity Successfully !!!');
+                res.send('Decrease Quantity Successfully!');
+            } else {
+                res.send('Invalid request: orderItems is missing or not an array.');
+            }
         } catch (error) {
-            res.json({ error: err });
+            console.log('Error: ', error);
+            res.status(500).send('Internal server error');
         }
     }
+    
 
     // [PATCH] /mark-all
     markAll = async (req, res, next) => {

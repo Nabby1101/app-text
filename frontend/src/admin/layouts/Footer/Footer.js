@@ -14,7 +14,7 @@ const Footer = () => {
                                     rel="nofollow"
                                     target=""
                                     style={{color: 'red'}}
-                                >
+                                >&nbsp;
                                     Azey_Shop
                                 </a>
                             </p>

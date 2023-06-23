@@ -553,12 +553,12 @@ const HomeAdmin = () => {
                                                                         {value.sex ===
                                                                         0 ? (
                                                                             <img
-                                                                                src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png"
+                                                                                src="assets/common/imgs/avtMale.jpg"
                                                                                 alt=""
                                                                             />
                                                                         ) : (
                                                                             <img
-                                                                                src="https://images.clipartlogo.com/files/istock/previews/9730/97305655-avatar-icon-of-girl-in-a-wide-brim-felt-hat.jpg"
+                                                                                src="assets/common/imgs/avtFemale.jpg"
                                                                                 alt=""
                                                                             />
                                                                         )}
@@ -713,7 +713,7 @@ const HomeAdmin = () => {
                                                         </h6>
                                                         <div className="image">
                                                             <img
-                                                                src="admin/assets/images/img/啊川_Azey 4.jpg"
+                                                                src="admin/assets/images/img/avtFemale.jpg"
                                                                 alt=""
                                                             />
                                                             <span className="status"></span>

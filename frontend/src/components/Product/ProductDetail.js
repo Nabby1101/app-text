@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MessageBox from '../Box/MessageBox';
 import Rate from '../Other/Rate';
-import RelatedProducts from '../Other/RelatedProduct';
+import RelatedProducts from './RelatedProduct';
 import { PRODUCT_REVIEW_CREATE_RESET } from '../.././constants/productConstant';
 import { addCart } from '../.././redux/actions/cartActions';
 import { getCategories } from '../.././redux/actions/categoryActions';
@@ -374,7 +374,11 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    document.title = 'IA - Chi Tiết Sản Phẩm'
+    document.title = 'IA - Chi Tiết Sản Phẩm';
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     if (successReviewCreate) {
       toast.success('Cám ơn bạn đã đánh giá !.', {
         position: 'top-center',
@@ -546,7 +550,6 @@ const ProductDetail = () => {
                                   className="active"
                                   style={{
                                     background: '#FF00E2',
-                                    border: '1px solid black',
                                   }}
                                 >
                                   {checkSize(
@@ -722,7 +725,7 @@ const ProductDetail = () => {
                   ssr={true} // means to render carousel on server-side.
                   infinite={true}
                   autoPlay={true}
-                  autoPlaySpeed={5000}
+                  autoPlaySpeed={3000}
                   keyBoardControl={true}
                   customTransition="all .5"
                   transitionDuration={500}
@@ -748,7 +751,7 @@ const ProductDetail = () => {
                                 key
                               )
                             }
-                            style={{ margin: '1%' }}
+                            style={{ margin: '1%', cursor: 'pointer' }}
                           >
                             <img
                               src={`http://localhost:8080/uploads/products/${value}`}
@@ -791,7 +794,7 @@ const ProductDetail = () => {
                             key
                           }
                           className="co-item"
-                        >
+                        ><hr />
                           <div className="avatar-pic">
                             {value.sex ===
                               0 ? (
@@ -868,7 +871,7 @@ const ProductDetail = () => {
                 {/* <div className="co-item">
                   <div className="avatar-pic">
                     <img
-                      src="assets/img/product-single/avatar-2.png"
+                      src="assets/common/imgs/error.jpg"
                       alt=""
                     />
                   </div>
@@ -881,9 +884,9 @@ const ProductDetail = () => {
                       <i className="fa fa-star-o" />
                     </div>
                     <h5>
-                      Roy Banks{' '}
+                      Nabby{' '}
                       <span>
-                        27 Aug 2019
+                        5/28/2023
                       </span>
                     </h5>
                     <div className="at-reply">

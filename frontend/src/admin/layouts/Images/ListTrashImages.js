@@ -37,13 +37,13 @@ const ListTrashImages = () => {
                         });
                     }}
                 >
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
                 </button>
             );
         } else {
             return (
                 <button className="main-btn danger-btn-outline" disabled>
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa Vĩnh Viễn
                 </button>
             );
         }
@@ -70,13 +70,13 @@ const ListTrashImages = () => {
                         });
                     }}
                 >
-                    <i className="fas fa-minus-circle"></i>&ensp;Phục Hồi
+                    <i className="fa fa-eraser"></i>&ensp;Phục Hồi
                 </button>
             );
         } else {
             return (
                 <button className="main-btn info-btn-outline" disabled>
-                    <i className="fas fa-minus-circle"></i>&ensp;Phục Hồi
+                    <i className="fa fa-eraser"></i>&ensp;Phục Hồi
                 </button>
             );
         }
@@ -107,7 +107,7 @@ const ListTrashImages = () => {
                                         to="/admin/images"
                                         className="main-btn secondary-btn btn-hover"
                                     >
-                                        <i className="fas fa-clipboard-list"></i>
+                                        <i className="fa fa-clipboard-list"></i>
                                         &ensp;Danh Sách Hình Ảnh
                                     </Link>
                                     &nbsp;

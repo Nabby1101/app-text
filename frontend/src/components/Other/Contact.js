@@ -22,7 +22,11 @@ const Contact = () => {
 
   useEffect(() => {
     document.title = 'IA - Liên Hệ';
-  },[]);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   const notify = () => {
     toast.error('Vui lòng nhập nội dung cần gửi ', {
@@ -174,14 +178,12 @@ const Contact = () => {
                       <dl>
                         <dt>Nội Dung Tâm Sự</dt>
                         <dd>
-                          <FastField 
-                          type="textarea"
-                          name="message" 
-                          cols={60} 
-                          rows={5} 
-                          className="jpFont" required 
-                          defaultValue={""} 
-                          component={TextareaField}
+                          <FastField
+                            type="textarea"
+                            name="message"
+                            className="jpFont" required
+                            defaultValue={""}
+                            component={TextareaField}
                           /></dd>
                       </dl>
                       {/* ////////////////////////////////////////////// */}

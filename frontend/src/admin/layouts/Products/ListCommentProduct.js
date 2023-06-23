@@ -37,7 +37,7 @@ const ListCommentProduct = (props) => {
                                         to="/admin/products"
                                         className="main-btn secondary-btn btn-hover"
                                     >
-                                        <i className="fas fa-clipboard-list"></i>
+                                        <i className="fa fa-clipboard-list"></i>
                                         &ensp;Danh Sách Sản Phẩm
                                     </Link>
                                     &nbsp;

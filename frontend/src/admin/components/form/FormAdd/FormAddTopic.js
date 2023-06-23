@@ -103,7 +103,7 @@ const FormAddTopic = () => {
                                                         to={`/admin/topics`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -114,7 +114,7 @@ const FormAddTopic = () => {
                                                             setSave("true")
                                                         }
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu
                                                     </button>
                                                     &nbsp;
@@ -125,7 +125,7 @@ const FormAddTopic = () => {
                                                             setSave("false")
                                                         }
                                                     >
-                                                        <i className="far fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu và tiếp tục
                                                     </button>
                                                 </nav>
@@ -155,20 +155,30 @@ const FormAddTopic = () => {
                                                     component={MultiSelectField}
                                                     placeholder="Chọn chủ đề cha..."
                                                     id="parentTopic"
-                                                    options={[
-                                                        {
-                                                            value: "0",
-                                                            label: "NEWS",
-                                                        },
-                                                        {
-                                                            value: "1",
-                                                            label: "GOOD",
-                                                        },
-                                                        {
-                                                            value: "2",
-                                                            label: "HOT",
-                                                        },
-                                                    ]}
+
+                                                    options={topic}
+                                                    
+                                                    // options={[
+                                                    //     {
+                                                    //         value: "0",
+                                                    //         label: "NEWS",
+                                                    //     },
+                                                    //     {
+                                                    //         value: "1",
+                                                    //         label: "GOODS",
+                                                    //     },
+                                                    //     {
+                                                    //         value: "2",
+                                                    //         label: "HOT",
+                                                    //     },
+                                                    //     {
+                                                    //         value: "2",
+                                                    //         label: "SOFTWARE",
+                                                    //     },{
+                                                    //         value: "2",
+                                                    //         label: "EVENT",
+                                                    //     }
+                                                    // ]}
                                                 />
                                                 {/* end input */}
                                                 <FastField

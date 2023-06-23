@@ -74,42 +74,18 @@ const Category = (props) => {
             setGrandChildCate((oldVal) => [...oldVal, value]);
           } else if (
             value.type === '3' &&
-            (parentType === '0' || parentType === '1')
+            (parentType === '1')
           ) {
             setGrandChildCate((oldVal) => [...oldVal, value]);
           } else if (
             value.type === '4' &&
-            (parentType === '0' || parentType === '1')
+            (parentType === '2')
           ) {
             setGrandChildCate((oldVal) => [...oldVal, value]);
-          } else if (
+          }
+          else if (
             value.type === '5' &&
-            (parentType === '2' || parentType === '2')
-          ) {
-            setGrandChildCate((oldVal) => [...oldVal, value]);
-          } else if (
-            value.type === '9' &&
-            (parentType === '3' || parentType === '1')
-          ) {
-            setGrandChildCate((oldVal) => [...oldVal, value]);
-          } else if (
-            value.type === '6' &&
-            (parentType === '5' || parentType === '2')
-          ) {
-            setGrandChildCate((oldVal) => [...oldVal, value]);
-          } else if (
-            value.type === '7' &&
-            (parentType === '5' || parentType === '2')
-          ) {
-            setGrandChildCate((oldVal) => [...oldVal, value]);
-          } else if (
-            value.type === '8' &&
-            (parentType === '5' || parentType === '2')
-          ) {
-            setGrandChildCate((oldVal) => [...oldVal, value]);
-          } else if (
-            value.type === '10' &&
-            (parentType === '4' || parentType === '1')
+            (parentType === '2')
           ) {
             setGrandChildCate((oldVal) => [...oldVal, value]);
           }
@@ -174,6 +150,10 @@ const Category = (props) => {
   };
 
   useEffect(() => {
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth',
+    // });
     var arrActCate = '';
     var idCate = '';
     lstParentCate.forEach((value) => {
@@ -213,9 +193,9 @@ const Category = (props) => {
           <li><a href="#">Tóc Giả</a></li>
           <li><a href="#">Figure</a></li>
         </ul> */}
-        <div id="searchBox"  method="get" class="flex">
+        <div id="searchBox" method="get" class="flex">
           <input
-          id='s-box'
+            id='s-box'
             value={search}
             type="text"
             onChange={(e) =>

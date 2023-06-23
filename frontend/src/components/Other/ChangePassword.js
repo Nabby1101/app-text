@@ -37,8 +37,10 @@ const ChangePasswordScreen = (props) => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-                // console.log(values);
-                values.id = props.match.params.id;
+                console.log(values);
+                if (props && props.match && props.match.params) {
+                    values.id = props.match.params.id;
+                }
                 dispatch(change(values));
                 // setConfirm(true);
             }}

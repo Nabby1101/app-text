@@ -94,7 +94,7 @@ const FormEditTopic = (props) => {
                                                         to={`/admin/topics`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -102,7 +102,7 @@ const FormEditTopic = (props) => {
                                                         type="submit"
                                                         className="main-btn success-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Cập Nhật
                                                     </button>
                                                 </nav>

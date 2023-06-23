@@ -20,7 +20,7 @@ class VoucherController {
             const code = [];
             for (var i = 0; i < req.body.quantity; i++) {
                 var shuffled =
-                    'FS' +
+                    'AZ' +
                     req.body.idCharacter +
                     (await generatePassword(length));
                 code.push(shuffled);

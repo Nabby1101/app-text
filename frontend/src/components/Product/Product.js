@@ -5,8 +5,9 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { getCategories } from '../../redux/actions/categoryActions';
 import { getColors, getProducts, getSizes } from '../../redux/actions/productActions';
-import Category from './Category'
-
+import Category from './Category';
+import axios from 'axios';
+import _ from 'lodash';
 const Product = () => {
   const dispatch = useDispatch();
   const lstCate = useSelector((state) => state.category.categories);
@@ -32,11 +33,6 @@ const Product = () => {
       if (catSlug && catSlug2) {
         catSlug.forEach((value) => {
           lstPro.Products.forEach((index) => {
-            // console.log('??????')
-            // console.log(index.categoryId)
-            // console.log(value._id)
-            // console.log(index.categoryId.trim() == value._id)
-            // console.log('!!!!!!')
             if (
               index.categoryId.trim() == value._id &&
               index.status === '1'
@@ -45,7 +41,7 @@ const Product = () => {
             }
           });
         });
-        console.log(proSlug1)
+        console.log('proSlug1', proSlug1)
         catSlug2.forEach((value) => {
           proSlug1.forEach((index) => {
             if (index.categoryId.includes(value._id)) {
@@ -139,14 +135,14 @@ const Product = () => {
           });
           catSlug2.forEach((value) => {
             proSlug1.forEach((index) => {
-              if (index.categoryId.includes(value._id)) {
+              if (index.categoryId.includes(value._id) && index.status === '1') {
                 proSlug2.push(index);
               }
             });
           });
           catSlug3.forEach((value) => {
             proSlug2.forEach((index) => {
-              if (index.categoryId.includes(value._id)) {
+              if (index.categoryId.includes(value._id) && index.status === '1') {
                 showPro.push(index);
               }
             });
@@ -155,11 +151,11 @@ const Product = () => {
       }
     } else if (match1 && lstCate && lstCate.Categories) {
       const catSlug = lstCate.Categories.filter(
-        (value) => value.slug === match1.params.slug
+        (value) => value.slug === match1.params.slug && value.status === '1'
       );
       catSlug.forEach((value) => {
         lstPro.Products.forEach((index) => {
-          if (index.categoryId.includes(value._id)) {
+          if (index.categoryId.includes(value._id) && index.status === '1') {
             showPro.push(index);
           }
         });
@@ -182,22 +178,124 @@ const Product = () => {
       return (
         // <a></a>
         <div className="icon">
-          <i className="icon_heart_alt" style={{color: 'red'}}></i>
+          <i className="icon_heart_alt" style={{ color: 'red' }}></i>
         </div>
       );
     } else {
       return (
         // <a>Đã Yêu Thích Sản Phẩm</a>
         <div className="icon">
-          <i className="icon_heart" style={{color: 'red'}}></i>
+          <i className="icon_heart" style={{ color: 'red' }}></i>
         </div>
       );
     }
   };
 
+  // 9sp/3sp 1 ul//
+  // const [currentTodos, setCurrentTodos] = useState([]);
+  // const ITEMS_PER_PAGE = 9;
+  // const totalPages = Math.ceil(currentTodos.length / ITEMS_PER_PAGE);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  // const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+  // const currentItems = showPro.slice(indexOfFirstItem, indexOfLastItem);
+
+  const renderItems = () => {
+    const items = [];
+
+    if (currentTodos.length === 0) {
+      return <h1 style={{textAlign:'center'}}>Không Có Sản Phẩm Nào Cả</h1>;
+    }
+    for (let i = 0; i < currentTodos.length; i += 3) {
+      const itemSet = currentTodos.slice(i, i + 3);
+      const itemList = itemSet.map((value, key) => {
+        let Arr = [];
+        const imageArr = value.image.split(',');
+        Arr.push(imageArr[0]);
+        return (
+          <li
+            className="thumb border"
+            style={{ marginLeft: "-1%", maxHeight: "288px", marginBottom: "3%" }}
+            key={key}
+          >
+            <Link
+              to={`/product/${value.slug}`}
+              onClick={() =>
+                localStorage.setItem(
+                  'proCate',
+                  value.categoryId
+                )
+              }
+            >
+              <img
+                src={`http://localhost:8080/uploads/products/${Arr}`}
+                alt="アクリルスタンド"
+                style={{ zIndex: '-1' }}
+              />
+              <div className='mask'>
+                <div className='caption' style={{ width: '', height: '' }}>
+                  {value.priceDiscount !==
+                    0 ? (
+                    <div className="ariaSale">
+                      <a className target>
+                        <img src="./assets/common/imgs/Sale_aria.png" alt="セール" />
+                        <img src="./assets/common/imgs/Sale_aria.png" alt="セール" className="blur" />
+                      </a>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                  {/* <div>
+                    {checkCate(value.categoryId)}
+                  </div> */}
+                  <p style={{ fontSize: '18px' }}>
+                    {value.name}
+                  </p>
+                  <Link to={`/product/${value.slug}`} onClick={() =>
+                    localStorage.setItem(
+                      'proCate',
+                      value.categoryId
+                    )}>Chi Tiết</Link>
+                  <br />
+                  {handleCheckFavorite(
+                    value._id
+                  )}
+                  {value.priceDiscount !==
+                    0 ? (
+                    <div className="enFont" style={{ fontSize: '20px' }}>
+                      {formatVND(
+                        value.priceDiscount
+                      )}&nbsp;
+                      <span style={{ textDecoration: 'line-through' }}>
+                        {' '}
+                        {formatVND(
+                          value.price
+                        )}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="enFont" style={{ fontSize: '20px' }}>
+                      {formatVND(
+                        value.price
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Link>
+          </li>
+        );
+      });
+      items.push(<ul className="thumbList flex post imgHover">{itemList}</ul>);
+    }
+
+    return items;
+  };
+
+
   const [activePage, setActivePage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(9);
 
   const last = currentPage * count;
   const first = last - count;
@@ -260,7 +358,14 @@ const Product = () => {
   };
 
   useEffect(() => {
-    document.title = 'IA - Sản Phẩm'
+    document.title = 'IA - Sản Phẩm';
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    // axios.get(`http://localhost:8080/api/product`).then((res) => {
+    //   setCurrentTodos(res.data);
+    // });
     dispatch(getCategories());
     dispatch(getProducts());
     dispatch(getColors());
@@ -317,98 +422,12 @@ const Product = () => {
           {/* 本文 ---------------------------- */}
           <div className="main">
             <div className="list container">
-              <ul className='thumbList flex post imgHover'>
-                {currentTodos.length !== 0 ? (
-                  currentTodos.map((value, key) => {
-                    return (
-                      // <ul className='thumbList flex post imgHover'>
-                      <li className='thumb border' style={{ marginLeft: '-1%', height: '288px', marginBottom: '3%' }}>
-                        <div
-                          key={key}
-                          className=''
-                        >
-                          <Link
-                            to={`/product/${value.slug}`}
-                            // target
-                            onClick={() =>
-                              localStorage.setItem(
-                                'proCate',
-                                value.categoryId
-                              )
-                            }
-                          >
-                            <img
-                              src={`http://localhost:8080/uploads/products/${checkImage(key)}`}
-                              alt="アクリルスタンド"
-                              style={{ zIndex: '-1' }}
-                            />
-                            <div className='mask'>
-                              <div className='caption' style={{ width: '', height: '' }}>
-                                {value.priceDiscount !==
-                                  0 ? (
-                                  <div className="ariaSale">
-                                    <a className target>
-                                      <img src="./assets/common/imgs/Sale_aria.png" alt="セール" />
-                                      <img src="./assets/common/imgs/Sale_aria.png" alt="セール" className="blur" />
-                                    </a>
-                                  </div>
-                                ) : (
-                                  <></>
-                                )}
+              {renderItems()}
+            </div>
+            {/* <ul className='thumbList flex post imgHover'></ul> */}
 
-                                {/* <div>
-                                  {checkCate(value.categoryId)}
-                                </div> */}
-                                <p style={{ fontSize: '20px' }}>
-                                  {value.name}
-                                </p>
-                                <Link to={`/product/${value.slug}`} onClick={() =>
-                                  localStorage.setItem(
-                                    'proCate',
-                                    value.categoryId
-                                  )}>Chi Tiết</Link>
-                                <br />
-                                {handleCheckFavorite(
-                                  value._id
-                                )}
-                                {/* {value.priceDiscount !==
-                                  0 ? (
-                                  <div className="">
-                                    {formatVND(
-                                      value.priceDiscount
-                                    )}
-                                    <span>
-                                      {' '}
-                                      {formatVND(
-                                        value.price
-                                      )}
-                                    </span>
-                                  </div>
-                                ) : (
-                                  <div className="">
-                                    {formatVND(
-                                      value.price
-                                    )}
-                                  </div>
-                                )} */}
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </li>
-                      // </ul>
-                    );
-                  })
-                ) : (
-                  <div>
-                    <h2>Không Có Sản Phẩm Nào Cả</h2>
-                  </div>
-                )}
-              </ul>
-              {/* <ul className='thumbList flex post imgHover'></ul> */}
-
-              {/* Tsugi e */}
-              {/* <ul className="thumbList flex post imgHover">
+            {/* Tsugi e */}
+            {/* <ul className="thumbList flex post imgHover">
                 <li className="thumb border" style={{ marginLeft: '-1%' }}>
                   <img src="./assets/common/imgs/shop.jpeg" alt="IA Sports BIGアクリルスタンド" />
                   <div className="mask">
@@ -437,17 +456,25 @@ const Product = () => {
                   </div>
                 </li>
               </ul> */}
-            </div>
             {/* Pagination */}
             <div className="pager">
               <ul className='listPage'>
-                {
+                {/* {
                   btnCount.map((btn) =>
                     <li key={btn} className={btn == activePage ? "select" : ""} onClick={() => handlePageChange(btn)} style={{ cursor: 'cell' }}>
                       <a>{btn}</a>
                     </li>
                   )
-                }
+                } */}
+                <Pagination
+                  itemClass="page-item"
+                  linkClass="page-link"
+                  activePage={activePage}
+                  itemsCountPerPage={9}
+                  totalItemsCount={showPro.length}
+                  pageRangeDisplayed={5}
+                  onChange={handlePageChange}
+                />
               </ul>
               {/* <span className="m-pagenation__next" style={{ paddingRight: '5%' }}>
                 <a onClick={prePage}>PREV</a>

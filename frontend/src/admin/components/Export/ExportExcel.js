@@ -164,7 +164,7 @@ const ExportExcel = (props) => {
             className="main-btn success-btn btn-hover"
             onClick={() => exportData()}
         >
-            <i className="fas fa-save"></i>
+            <i className="fa fa-save"></i>
             &ensp;Xuất file Excel
         </button>
     );

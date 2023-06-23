@@ -66,7 +66,7 @@ const FormEditContact = (props) => {
                                                         to={`/admin/contacts`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -74,7 +74,7 @@ const FormEditContact = (props) => {
                                                         type="submit"
                                                         className="main-btn success-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Gửi và lưu phản
                                                         hồi
                                                     </button>

@@ -224,7 +224,7 @@ const CategoryTable = (props) => {
                                                                             }
                                                                             title="Show"
                                                                         >
-                                                                            <i className="">Hiện</i>
+                                                                            <i className="fa fa-eye" style={{fontSize: '33px'}}></i>
                                                                         </button>
                                                                     ) : (
                                                                         <button
@@ -238,7 +238,7 @@ const CategoryTable = (props) => {
                                                                             }
                                                                             title="Hidden"
                                                                         >
-                                                                            <i className="">Ẩn</i>
+                                                                            <i className="fa fa-eye-slash" style={{fontSize: '33px'}}></i>
                                                                         </button>
                                                                     )}
                                                                 </div>
@@ -250,8 +250,7 @@ const CategoryTable = (props) => {
                                                                         className="text-primary"
                                                                         title="Edit"
                                                                     >
-                                                                        <p className='text-center' style={{color: '#FF00E2'}}>Chỉnh Sửa</p>
-                                                                        <i className="fas fa-pen-square"></i>
+                                                                        <i className="fa fa-pencil-square" style={{fontSize: '33px', color: '#FF00E2'}}></i>
                                                                     </Link>
                                                                 </div>
                                                             </td>

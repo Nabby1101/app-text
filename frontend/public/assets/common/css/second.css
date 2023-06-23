@@ -1032,7 +1032,7 @@ a .imgfit:hover img {
     text-decoration: none
 }
 
-.ichiran .pager li.select a {
+.ichiran .pager li.active a {
     background-color: #000;
     color: #fff
 }
@@ -1570,7 +1570,7 @@ a .imgfit:hover img {
 }
 
 #video h1.title {
-    padding-bottom: 30px
+    padding-bottom: 30px;
 }
 
 #video.second {
@@ -1586,7 +1586,7 @@ a .imgfit:hover img {
 
 #video .topMovie .youtube {
     width: 65%;
-    margin-top: -110px
+    margin-top: -110px;
 }
 
 #video .topMovie .txt {
@@ -1935,7 +1935,7 @@ a .imgfit:hover img {
 
 #contact #formArea input,
 #contact #formArea textarea {
-    font-family: "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "游ゴシック", YuGothic, sans-serif;
+    /* font-family: "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "游ゴシック", YuGothic, sans-serif; */
     border: 1px solid #d8d8d8;
     background-color: #fff;
     width: 100%;

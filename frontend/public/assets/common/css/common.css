@@ -1302,6 +1302,27 @@ header.global nav.global .sns a:hover {
     opacity: 0.6
 }
 
+header.global nav.global .sns a>.sns_favorites:hover {
+    color: #000;
+}
+
+header.global nav.global .sns span{
+    color: white;
+    background-color: #FF00E2;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+    margin-left: -5px;
+}
+
+header.global nav.global .sns span:hover{
+    color: none;
+    background-color: #000;
+}
+
 @media screen and (max-width: 480px) {
     header.global {
         height: 75px;

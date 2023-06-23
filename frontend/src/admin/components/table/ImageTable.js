@@ -129,7 +129,7 @@ const ImageTable = (props) => {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="card-style mb-30">
-                        <div className="table-wrapper table-responsive">
+                        <div className="table-wrapper table-responsive text-center">
                             <table className="table table-bordered">
                                 <thead>
                                     <tr>
@@ -246,7 +246,7 @@ const ImageTable = (props) => {
                                                                             }
                                                                             title="Show"
                                                                         >
-                                                                            <i className="far fa-eye"></i>
+                                                                            <i className="fa fa-eye" style={{fontSize: '33px'}}></i>
                                                                         </button>
                                                                     ) : (
                                                                         <button
@@ -256,7 +256,7 @@ const ImageTable = (props) => {
                                                                             )}
                                                                             title="Hidden"
                                                                         >
-                                                                            <i className="far fa-eye-slash"></i>
+                                                                            <i className="fa fa-eye-slash" style={{fontSize: '33px'}}></i>
                                                                         </button>
                                                                     )}
                                                                 </div>
@@ -268,8 +268,7 @@ const ImageTable = (props) => {
                                                                         className="text-primary"
                                                                         title="Edit"
                                                                     >
-                                                                        <p className='text-center' style={{color: '#FF00E2'}}>Chỉnh Sửa</p>
-                                                                        <i className="fas fa-pen-square"></i>
+                                                                        <i className="fa fa-pencil-square" style={{fontSize: '33px', color: '#FF00E2'}}></i>
                                                                     </Link>
                                                                 </div>
                                                             </td>

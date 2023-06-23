@@ -35,7 +35,7 @@ const FormAddPost = () => {
         summary: '',
         content: '',
         type: '1',
-        createdBy: 'Biên tập viên Fashi',
+        createdBy: 'Biên tập viên Azey',
         status: '1',
     };
 
@@ -152,7 +152,7 @@ const FormAddPost = () => {
                                                         to={`/admin/posts`}
                                                         className="main-btn active-btn btn-hover"
                                                     >
-                                                        <i className="fas fa-chevron-circle-left"></i>
+                                                        <i className="fa fa-chevron-circle-left"></i>
                                                         &ensp;Quay Lại Danh Sách
                                                     </Link>
                                                     &nbsp;
@@ -163,7 +163,7 @@ const FormAddPost = () => {
                                                             setSave('true')
                                                         }
                                                     >
-                                                        <i className="fas fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu
                                                     </button>
                                                     &nbsp;
@@ -174,7 +174,7 @@ const FormAddPost = () => {
                                                             setSave('false')
                                                         }
                                                     >
-                                                        <i className="far fa-save"></i>
+                                                        <i className="fa fa-save"></i>
                                                         &ensp;Lưu và tiếp tục
                                                     </button>
                                                 </nav>

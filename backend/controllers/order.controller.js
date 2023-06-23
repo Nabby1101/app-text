@@ -2,6 +2,7 @@ const { JsonWebTokenError } = require('jsonwebtoken');
 const orderModel = require('../models/order.model');
 const voucherModel = require('../models/voucher.model');
 const nodemailer = require('nodemailer');
+const productModel = require('../models/product.model');
 
 class OrderController {
     /* ----Begin Actions Add product ---- */

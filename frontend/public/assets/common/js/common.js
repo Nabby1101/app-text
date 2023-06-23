@@ -219,7 +219,7 @@ $(function() {
     
 	//#backTopのクリック処理
 	$('#backTop a').on("click",function() {
-		$('body,html').stop().animate({scrollTop:1}, 400, 'easeOutExpo');
+		$('body,html').stop().animate({scrollTop:1}, 1500, 'easeOutExpo');
 		return false;
 	});
 	

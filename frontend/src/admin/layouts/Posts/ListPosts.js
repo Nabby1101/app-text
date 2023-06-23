@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deletePosts, getPosts } from '../../../redux/actions/postActions';
 import { getTopics } from '../../../redux/actions/topicActions';
 import PostTable from '../../components/table/PostTable';
 
 const ListPosts = () => {
-    let { url } = useLocation();
+    let { url } = useRouteMatch();
     const dispatch = useDispatch();
     const [deleteItems, setDeleteItems] = useState([]);
     const lstPosts = useSelector((state) => state.post.posts_list);
@@ -36,13 +36,13 @@ const ListPosts = () => {
                     className="main-btn danger-btn btn-hover"
                     onClick={() => ClickDeleteHandler()}
                 >
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa(Đã Chọn);
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa(Đã Chọn);
                 </button>
             );
         } else {
             return (
                 <button className="main-btn danger-btn-outline" disabled>
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa
                 </button>
             );
         }
@@ -73,7 +73,7 @@ const ListPosts = () => {
                                         to={`${url}/add`}
                                         className="main-btn success-btn btn-hover"
                                     >
-                                        <i className="fas fa-plus"></i>
+                                        <i className="fa fa-plus"></i>
                                         &ensp;Thêm
                                     </Link>
                                     &nbsp;
@@ -83,7 +83,7 @@ const ListPosts = () => {
                                         to={`${url}/trash`}
                                         className="main-btn warning-btn btn-hover"
                                     >
-                                        <i className="fas fa-trash-alt"></i>
+                                        <i className="fa fa-trash-alt"></i>
                                         &ensp;Thùng Rác ({lstPosts.deletedCount}
                                         )
                                     </Link>

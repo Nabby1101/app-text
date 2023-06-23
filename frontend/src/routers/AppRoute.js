@@ -2,29 +2,30 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 // import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import ChangePassword from '../components/Other/ChangePassword'
-import LogoutScreen from '../layouts/logout'
-import AboutPage from '../page/AboutPage'
-import CartPage from '../page/CartPage'
-import CheckOutPage from '../page/CheckOutPage'
-import OrderHistoryPage from '../page/OrderHistoryPage'
-import ContactPage from '../page/ContactPage'
-import ForgetPasswordPage from '../page/ForgetPasswordPage'
-import HomePage from '../page/HomePage'
-import LoginPage from '../page/LoginPage'
-import NewsPage from '../page/NewsPage'
-import OrderPage from '../page/OrderPage'
-import ProductDetailPage from '../page/ProductDetailPage'
-import ProductPage from '../page/ProductPage'
-import ProfilePage from '../page/ProfilePage'
-import RegisterPage from '../page/RegisterPage'
-import SearchPage from '../page/SearchPage'
-import FavoritesProducts from '../components/Other/FavoritesProducts'
-import ADM from '../admin/screens'
-import ErrorPage from '../layouts/error'
-import Load from '../layouts/load'
-import { connect } from 'react-redux'
-import PrivateRoute from './PrivateRoute'
-import PrivateRouteAdmin from './PrivateRouteAdmin'
+import LogoutScreen from '../layouts/logout';
+import AboutPage from '../page/AboutPage';
+import CartPage from '../page/CartPage';
+import CheckOutPage from '../page/CheckOutPage';
+import OrderHistoryPage from '../page/OrderHistoryPage';
+import ContactPage from '../page/ContactPage';
+import ForgetPasswordPage from '../page/ForgetPasswordPage';
+import HomePage from '../page/HomePage';
+import LoginPage from '../page/LoginPage';
+import NewsPage from '../page/NewsPage';
+import DetailNewsPage from '../page/DetailNewsPage';
+import OrderPage from '../page/OrderPage';
+import ProductDetailPage from '../page/ProductDetailPage';
+import ProductPage from '../page/ProductPage';
+import ProfilePage from '../page/ProfilePage';
+import RegisterPage from '../page/RegisterPage';
+import SearchPage from '../page/SearchPage';
+import FavoritesProducts from '../components/Other/FavoritesProducts';
+import ADM from '../admin/screens';
+import ErrorPage from '../page/ErrorPage';
+import Load from '../layouts/load';
+import { connect } from 'react-redux';
+import PrivateRoute from './PrivateRoute';
+import PrivateRouteAdmin from './PrivateRouteAdmin';
 const AppRoute = () => {
 
     return (
@@ -45,9 +46,14 @@ const AppRoute = () => {
                 </PrivateRoute>
             </Route>
             <Route path='/tim-kiem'> <SearchPage /></Route>
+            <Route path='/danh-muc-ua-thich'>
+                <PrivateRoute>
+                    <FavoritesProducts />
+                </PrivateRoute>
+            </Route>
             <Route
                 path={[
-                    '/category',
+                    // '/category',
                     '/category/:slug',
                     '/color/:slug',
                     '/size/:slug',
@@ -56,11 +62,7 @@ const AppRoute = () => {
                 ]}>
                 <ProductPage />
             </Route>
-            <Route path='/danh-muc-ua-thich'>
-                <PrivateRoute>
-                    <FavoritesProducts />
-                </PrivateRoute>
-            </Route>
+
             <Route path='/product/:slug'> <ProductDetailPage /></Route>
             <Route path='/gio-hang/check-out'>
                 <PrivateRoute>
@@ -71,11 +73,18 @@ const AppRoute = () => {
             <Route path='/order/:id'> <OrderPage /></Route>
             <Route path='/lich-su-mua-hang'>
                 <PrivateRoute>
-                < OrderHistoryPage />
+                    < OrderHistoryPage />
                 </PrivateRoute>
             </Route>
-            <Route path='/news'> <NewsPage /></Route>
-            <Route path='/admin'> 
+            <Route path='/tin-tuc/:slug'> <DetailNewsPage /></Route>
+            <Route
+                path={[
+                    '/tin-tuc',
+                    '/chu-de/:slug',
+                ]}>
+                <NewsPage />
+            </Route>
+            <Route path='/admin'>
                 <PrivateRouteAdmin>
                     <ADM />
                 </PrivateRouteAdmin>

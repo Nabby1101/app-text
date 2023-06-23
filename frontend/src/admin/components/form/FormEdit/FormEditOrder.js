@@ -183,7 +183,7 @@ const FormEditOrder = (props) => {
                                         to={`/admin/orders`}
                                         className="main-btn active-btn btn-hover"
                                     >
-                                        <i className="fas fa-chevron-circle-left"></i>
+                                        <i className="fa fa-chevron-circle-left"></i>
                                         &ensp;Quay Lại Danh Sách
                                     </Link>
                                     &nbsp;
@@ -192,7 +192,7 @@ const FormEditOrder = (props) => {
                                         className="main-btn success-btn btn-hover"
                                         onClick={() => printDocument()}
                                     >
-                                        <i className="fas fa-save"></i>
+                                        <i className="fa fa-save"></i>
                                         &ensp;Xuất file PDF
                                     </button>
                                 </nav>
@@ -217,7 +217,7 @@ const FormEditOrder = (props) => {
                                             marginBottom: '5px',
                                         }}
                                     >
-                                        <i className="fas fa-info"></i> Thông
+                                        <i className="fa fa-info"></i> Thông
                                         Tin Đơn Hàng
                                     </h4>
                                     <div className="row">
@@ -525,7 +525,7 @@ const FormEditOrder = (props) => {
                                             marginBottom: '5px',
                                         }}
                                     >
-                                        <i className="fas fa-truck"></i> Thanh
+                                        <i className="fa fa-truck"></i> Thanh
                                         Toán & Vận Chuyển
                                     </h4>
                                     <div className="row">
@@ -642,7 +642,7 @@ const FormEditOrder = (props) => {
                                             marginBottom: '5px',
                                         }}
                                     >
-                                        <i className="fas fa-th-list"></i> Sản
+                                        <i className="fa fa-th-list"></i> Sản
                                         Phẩm
                                     </h4>
                                     <div className="row">
@@ -786,7 +786,7 @@ const FormEditOrder = (props) => {
                                                                                         className="text-primary"
                                                                                         title="Edit"
                                                                                     >
-                                                                                        <i className="fas fa-pen-square"></i>
+                                                                                        <i className="fa fa-pen-square"></i>
                                                                                     </Link>
                                                                                 </div>
                                                                             </td> */}

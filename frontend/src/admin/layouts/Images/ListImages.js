@@ -36,13 +36,13 @@ const ListImages = () => {
                     className="main-btn danger-btn btn-hover"
                     onClick={() => ClickDeleteHandler()}
                 >
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa(Đã Chọn)
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa(Đã Chọn)
                 </button>
             );
         } else {
             return (
                 <button className="main-btn danger-btn-outline" disabled>
-                    <i className="fas fa-minus-circle"></i>&ensp;Xóa
+                    <i className="fa fa-minus-circle"></i>&ensp;Xóa
                 </button>
             );
         }
@@ -73,7 +73,7 @@ const ListImages = () => {
                                         to={`${url}/add`}
                                         className="main-btn success-btn btn-hover"
                                     >
-                                        <i className="fas fa-plus"></i>
+                                        <i className="fa fa-plus"></i>
                                         &ensp;Thêm
                                     </Link>
                                     &nbsp;
@@ -83,7 +83,7 @@ const ListImages = () => {
                                         to={`${url}/trash`}
                                         className="main-btn warning-btn btn-hover"
                                     >
-                                        <i className="fas fa-trash-alt"></i>
+                                        <i className="fa fa-trash-alt"></i>
                                         &ensp;Thùng Rác (
                                         {lstImages.deletedCount})
                                     </Link>

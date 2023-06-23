@@ -28,7 +28,7 @@ const CommentTable = (props) => {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="card-style mb-30">
-                        <div className="table-wrapper table-responsive">
+                        <div className="table-wrapper table-responsive text-center">
                             <table className="table table-bordered">
                                 <thead>
                                     <tr>
@@ -62,12 +62,12 @@ const CommentTable = (props) => {
                                                     <td className="min-width th-admin-comment">
                                                         {value.sex === 0 ? (
                                                             <img
-                                                                src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png"
+                                                                src="assets/common/imgs/avtMale.jpg"
                                                                 alt=""
                                                             />
                                                         ) : (
                                                             <img
-                                                                src="https://images.clipartlogo.com/files/istock/previews/9730/97305655-avatar-icon-of-girl-in-a-wide-brim-felt-hat.jpg"
+                                                                src="assets/common/imgs/avtFemale.jpg"
                                                                 alt=""
                                                             />
                                                         )}

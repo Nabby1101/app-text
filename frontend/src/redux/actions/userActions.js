@@ -380,6 +380,7 @@ export const forget = (user) => async (dispatch) => {
 export const change = (values) => async (dispatch) => {
     try {
         const data = await api.put(`api/user/changePassword`, values);
+        console.log('inforPass', data)
         if (data.data.user) {
             alert(data.data.message);
             localStorage.setItem('userInfo', JSON.stringify(data.data.user));
